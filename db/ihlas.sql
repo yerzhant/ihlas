@@ -356,6 +356,16 @@ GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE app_types TO ihlas_web;
 
 
 --
+-- Name: app_types_id_seq; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON SEQUENCE app_types_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE app_types_id_seq FROM ihlas;
+GRANT ALL ON SEQUENCE app_types_id_seq TO ihlas;
+GRANT USAGE ON SEQUENCE app_types_id_seq TO ihlas_web;
+
+
+--
 -- Name: applications; Type: ACL; Schema: public; Owner: ihlas
 --
 
@@ -363,6 +373,16 @@ REVOKE ALL ON TABLE applications FROM PUBLIC;
 REVOKE ALL ON TABLE applications FROM ihlas;
 GRANT ALL ON TABLE applications TO ihlas;
 GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE applications TO ihlas_web;
+
+
+--
+-- Name: applications_id_seq; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON SEQUENCE applications_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE applications_id_seq FROM ihlas;
+GRANT ALL ON SEQUENCE applications_id_seq TO ihlas;
+GRANT USAGE ON SEQUENCE applications_id_seq TO ihlas_web;
 
 
 --
@@ -376,6 +396,16 @@ GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE doc_types TO ihlas_web;
 
 
 --
+-- Name: doc_types_id_seq; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON SEQUENCE doc_types_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE doc_types_id_seq FROM ihlas;
+GRANT ALL ON SEQUENCE doc_types_id_seq TO ihlas;
+GRANT USAGE ON SEQUENCE doc_types_id_seq TO ihlas_web;
+
+
+--
 -- Name: docs; Type: ACL; Schema: public; Owner: ihlas
 --
 
@@ -386,6 +416,16 @@ GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE docs TO ihlas_web;
 
 
 --
+-- Name: docs_id_seq; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON SEQUENCE docs_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE docs_id_seq FROM ihlas;
+GRANT ALL ON SEQUENCE docs_id_seq TO ihlas;
+GRANT USAGE ON SEQUENCE docs_id_seq TO ihlas_web;
+
+
+--
 -- Name: indigents; Type: ACL; Schema: public; Owner: ihlas
 --
 
@@ -393,6 +433,16 @@ REVOKE ALL ON TABLE indigents FROM PUBLIC;
 REVOKE ALL ON TABLE indigents FROM ihlas;
 GRANT ALL ON TABLE indigents TO ihlas;
 GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE indigents TO ihlas_web;
+
+
+--
+-- Name: indigents_id_seq; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON SEQUENCE indigents_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE indigents_id_seq FROM ihlas;
+GRANT ALL ON SEQUENCE indigents_id_seq TO ihlas;
+GRANT USAGE ON SEQUENCE indigents_id_seq TO ihlas_web;
 
 
 --
