@@ -1,0 +1,41 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kz.azan.ihlas.data;
+
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+
+/**
+ *
+ * @author yerzhan
+ * @param <T>
+ */
+public abstract class Bean<T> {
+
+    @Inject
+    EntityManager em;
+
+    private final Class<T> entityClass;
+
+    public Bean(Class<T> c) {
+        entityClass = c;
+    }
+
+    public void edit(T entity) {
+        em.merge(entity);
+    }
+
+    public void delete(T entity) {
+        em.remove(em.merge(entity));
+    }
+
+    public List<T> findAll() {
+        javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        return em.createQuery(cq).getResultList();
+    }
+}
