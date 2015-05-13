@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.util.Util;
-import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -24,26 +23,43 @@ public abstract class Controller<T> implements Serializable {
 
     private T selected;
 
+    private boolean isNew = false;
+
     public void create() {
         try {
             selected = entityClass.newInstance();
-            items.add(selected);
+            isNew = true;
         } catch (InstantiationException | IllegalAccessException ex) {
             Util.addError(ex);
         }
     }
 
-    public void save(RowEditEvent e) {
-        getBean().save((T) e.getObject());
+    public void save() {
+        getBean().save(selected);
+        if (isNew) {
+            items = null;
+            selected = null;
+            isNew = false;
+        }
+    }
+
+    public void cancel() {
+        if (isNew) {
+            selected = null;
+            isNew = false;
+        }
     }
 
     public void delete() {
         getBean().delete(selected);
-        items.remove(selected);
+        selected = null;
+        isNew = false;
+        items = null;
     }
 
     public void refresh() {
         getBean().refresh();
+        selected = null;
         items = null;
     }
 
@@ -70,5 +86,6 @@ public abstract class Controller<T> implements Serializable {
 
     public void setSelected(T selected) {
         this.selected = selected;
+        isNew = false;
     }
 }

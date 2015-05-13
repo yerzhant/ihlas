@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="../WEB-INF/templates/main.xhtml"
                 xmlns:p="http://primefaces.org/ui"
@@ -11,31 +11,38 @@
     <ui:define name="body">
         <p:panel header="Типы заявлений">
 
-            <h:form>
-                <p:dataTable value="#{appTypes.items}" rowKey="#{item.name}" selection="#{appTypes.selected}" selectionMode="single" var="item" emptyMessage="Нет данных" editable="true">
+            <h:form id="tableForm">
+                <p:dataTable id="table" value="#{appTypes.items}" rowKey="#{item.id}" selection="#{appTypes.selected}" selectionMode="single" var="item" emptyMessage="Нет данных">
 
                     <p:column headerText="Наименование">
-                        <p:cellEditor>
-                            <f:facet name="output">#{item.name}</f:facet>
-                            <f:facet name="input"><p:inputText value="#{item.name}" class="table-cell" /></f:facet>
-                        </p:cellEditor>
-                    </p:column>
-
-                    <p:column class="table-editor">
-                        <p:rowEditor />
+                        #{item.name}
                     </p:column>
 
                     <f:facet name="footer">
-                        <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{appTypes.create()}" update="@form" />
+                        <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{appTypes.create()}" update="dlgForm" oncomplete="PF('dlg').show()" />
+                        <p:commandButton value="Редактировать" icon="ui-icon-pencil" update="dlgForm" oncomplete="PF('dlg').show()" id="editButton" disabled="#{empty appTypes.selected}" />
+                        <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{appTypes.delete()}" update="@form" id="deleteButton" disabled="#{empty appTypes.selected}" />
                         <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{appTypes.refresh()}" update="@form" />
-                        <p:commandButton value="Удалить" icon="ui-icon-trush" actionListener="#{appTypes.delete()}" update="@form" id="deleteButton" disabled="#{empty appTypes.selected}" />
                     </f:facet>
 
-                    <p:ajax event="rowEdit" listener="#{appTypes.save}" />
-                    <p:ajax event="rowSelect" update="deleteButton"/>
+                    <p:ajax event="rowSelect" update="editButton deleteButton" />
+                    <p:ajax event="rowUnselect" update="editButton deleteButton" />
 
                 </p:dataTable>
             </h:form>
+
+            <p:dialog widgetVar="dlg" modal="true" appendTo="@(body)">
+                <h:form id="dlgForm">
+                    <h:panelGroup>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel for="name" value="Наименование" />
+                            <p:inputText id="name" value="#{appTypes.selected.name}" />
+                        </p:panelGrid>
+                        <p:commandButton value="Сохранить" actionListener="#{appTypes.save()}" update=":tableForm" oncomplete="PF('dlg').hide()" />
+                        <p:commandButton value="Отменить" actionListener="#{appTypes.cancel()}" onclick="dlg.hide()" immediate="true" />
+                    </h:panelGroup>
+                </h:form>
+            </p:dialog>
 
         </p:panel>
     </ui:define>
