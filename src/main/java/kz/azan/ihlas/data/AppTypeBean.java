@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import kz.azan.ihlas.model.AppType;
 
 @Stateless
-public class AppTypeBean<T> extends Bean<AppType> {
+public class AppTypeBean extends Bean<AppType> {
 
     public AppTypeBean() {
         super(AppType.class);

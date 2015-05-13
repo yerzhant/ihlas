@@ -7,22 +7,42 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="css/default.css"/>
-        <h:outputStylesheet name="css/layout.css"/>
-        <title>إخلاص</title>
+        <title>إخلاص  - <ui:insert name="title" /></title>
+        <h:outputStylesheet name="css/main.css" />
     </h:head>
 
     <h:body>
-        
+
         <p:growl autoUpdate="true" />
 
-        <div id="top">
-            <ui:insert name="top">Top</ui:insert>
-        </div>
+        <p:confirmDialog global="true" header="Подтверждение" showEffect="fold" hideEffect="clip">
+            <p:commandButton value="Да" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+            <p:commandButton value="Нет" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+        </p:confirmDialog>
 
-        <div id="content">
-            <ui:insert name="content">Content</ui:insert>
-        </div>
+        <p:dialog widgetVar="status" modal="true" closable="false" resizable="false">
+            <p:outputLabel value="Пожалуйста, ждите..."/>
+        </p:dialog>
+
+        <p:layout fullPage="true">
+
+            <p:layoutUnit position="center">
+                <h:form>
+                    <p:menubar>
+                        <p:menuitem value="Главная" outcome="app-types.xhtml" icon="ui-icon-home" />
+                        <p:submenu label="Отчеты">
+                            <p:menuitem value="Типы заявлений" outcome="app-types.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Справочники">
+                            <p:menuitem value="Типы заявлений" outcome="app-types.xhtml" />
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+
+                <ui:insert name="body" />
+            </p:layoutUnit>
+
+        </p:layout>
 
     </h:body>
 

@@ -25,12 +25,16 @@ public abstract class Bean<T> {
         entityClass = c;
     }
 
-    public void edit(T entity) {
+    public void save(T entity) {
         em.merge(entity);
     }
 
     public void delete(T entity) {
         em.remove(em.merge(entity));
+    }
+
+    public void refresh() {
+        em.getEntityManagerFactory().getCache().evict(entityClass);
     }
 
     public List<T> findAll() {

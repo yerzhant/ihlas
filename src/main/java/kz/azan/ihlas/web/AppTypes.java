@@ -5,28 +5,30 @@
  */
 package kz.azan.ihlas.web;
 
-import java.util.List;
-import javax.enterprise.inject.Model;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import kz.azan.ihlas.data.AppTypeBean;
+import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.AppType;
 
 /**
  *
  * @author yerzhan
  */
-@Model
-public class AppTypes {
+@Named
+@SessionScoped
+public class AppTypes extends Controller<AppType> {
 
     @Inject
     private AppTypeBean bean;
 
-    private List<AppType> items;
+    public AppTypes() {
+        super(AppType.class);
+    }
 
-    public List<AppType> getItems() {
-        if (items == null) {
-            items = bean.findAll();
-        }
-        return items;
+    @Override
+    protected Bean getBean() {
+        return bean;
     }
 }

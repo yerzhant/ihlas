@@ -14,6 +14,10 @@ import javax.faces.context.FacesContext;
  */
 public class Util {
 
+    public static void addError(Exception e) {
+        addError(e.getLocalizedMessage());
+    }
+
     public static void addError(String s) {
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, s, s);
         FacesContext.getCurrentInstance().addMessage(s, m);

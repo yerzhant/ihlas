@@ -1,14 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="../WEB-INF/templates/main.xhtml">
+                template="../WEB-INF/templates/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <ui:define name="top">
-        top
-    </ui:define>
+    <ui:define name="title">Типы заявлений</ui:define>
 
-    <ui:define name="content">
-        content
+    <ui:define name="body">
+        <p:panel header="Типы заявлений">
+
+            <h:form>
+                <p:dataTable value="#{appTypes.items}" rowKey="#{item.name}" selection="#{appTypes.selected}" selectionMode="single" var="item" emptyMessage="Нет данных" editable="true">
+
+                    <p:column headerText="Наименование">
+                        <p:cellEditor>
+                            <f:facet name="output">#{item.name}</f:facet>
+                            <f:facet name="input"><p:inputText value="#{item.name}" class="table-cell" /></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column class="table-editor">
+                        <p:rowEditor />
+                    </p:column>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{appTypes.create()}" update="@form" />
+                        <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{appTypes.refresh()}" update="@form" />
+                        <p:commandButton value="Удалить" icon="ui-icon-trush" actionListener="#{appTypes.delete()}" update="@form" id="deleteButton" disabled="#{empty appTypes.selected}" />
+                    </f:facet>
+
+                    <p:ajax event="rowEdit" listener="#{appTypes.save}" />
+                    <p:ajax event="rowSelect" update="deleteButton"/>
+
+                </p:dataTable>
+            </h:form>
+
+        </p:panel>
     </ui:define>
 
 </ui:composition>
