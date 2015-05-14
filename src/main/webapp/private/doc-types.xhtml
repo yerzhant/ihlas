@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../WEB-INF/templates/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ez="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <ui:define name="title">Типы документов</ui:define>
+
+    <ui:define name="body">
+        <ez:table header="Типы документов" dialogHeader="Тип документа"
+                  items="#{docTypes.items}" selected="#{docTypes.selected}"
+                  create="#{docTypes.create()}" save="#{docTypes.save()}" delete="#{docTypes.delete()}" cancel="#{docTypes.cancel()}" refresh="#{docTypes.refresh()}">
+
+            <p:column headerText="Наименование">
+                #{item.name}
+            </p:column>
+
+            <f:facet name="dialog">
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="name" value="Наименование" />
+                    <p:inputText id="name" value="#{docTypes.selected.name}" />
+                </p:panelGrid>
+            </f:facet>
+
+        </ez:table>
+    </ui:define>
+
+</ui:composition>

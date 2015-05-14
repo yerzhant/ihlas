@@ -31,13 +31,17 @@
                     <p:menubar>
                         <p:menuitem value="Главная" outcome="app-types.xhtml" icon="ui-icon-home" />
                         <p:submenu label="Отчеты">
-                            <p:menuitem value="Типы заявлений" outcome="app-types.xhtml" />
+                            <p:menuitem value="Отчет 1" outcome="app-types.xhtml" />
+                            <p:menuitem value="Отчет 2" outcome="app-types.xhtml" />
                         </p:submenu>
                         <p:submenu label="Справочники">
                             <p:menuitem value="Типы заявлений" outcome="app-types.xhtml" />
+                            <p:menuitem value="Типы документов" outcome="doc-types.xhtml" />
                         </p:submenu>
                     </p:menubar>
                 </h:form>
+                
+                <p:spacer height="0" width="0" />
 
                 <ui:insert name="body" />
             </p:layoutUnit>
