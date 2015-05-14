@@ -21,7 +21,7 @@
 
     <!-- IMPLEMENTATION -->
     <cc:implementation>
-        <p:panel header="#{cc.attrs.header}">
+        <p:panel id="panel" header="#{cc.attrs.header}" >
 
             <h:form id="tableForm">
                 <p:dataTable id="table" value="#{cc.attrs.items}" rowKey="#{item.id}" selection="#{cc.attrs.selected}" selectionMode="single" var="item" emptyMessage="Нет данных">
@@ -29,8 +29,8 @@
                     <cc:insertChildren />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{cc.attrs.create}" update=":#{cc.id}:dlgForm" oncomplete="PF('dlg').show()" />
-                        <p:commandButton value="Редактировать" icon="ui-icon-pencil" update=":#{cc.id}:dlgForm" oncomplete="PF('dlg').show()" id="editButton" disabled="#{empty cc.attrs.selected}" />
+                        <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{cc.attrs.create}" update="@parent:@parent:@parent:@parent:dlgForm" oncomplete="PF('dlg').show()" id="createButton" />
+                        <p:commandButton value="Редактировать" icon="ui-icon-pencil" update="@parent:@parent:@parent:@parent:dlgForm" oncomplete="PF('dlg').show()" id="editButton" disabled="#{empty cc.attrs.selected}" />
                         <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{cc.attrs.delete}" update="@form" id="deleteButton" disabled="#{empty cc.attrs.selected}">
                             <p:confirm message="Удалить запись?" icon="ui-icon-alert" />
                         </p:commandButton>                            
@@ -49,12 +49,13 @@
 
                     <p:spacer height="30" width="0" />
 
-                    <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update=":#{cc.id}:tableForm @form" oncomplete="save(args, 'dlg')" icon="ui-icon-disk" />
+                    <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update="@parent:@parent:tableForm @form" oncomplete="save(args, 'dlg')" icon="ui-icon-disk" />
                     <p:commandButton value="Отменить" actionListener="#{cc.attrs.cancel}" onclick="dlg.hide()" immediate="true" icon="ui-icon-cancel" />
                 </h:form>
             </p:dialog>
+            
+            <cc:renderFacet name="footer" />
 
         </p:panel>
-
     </cc:implementation>
 </html>

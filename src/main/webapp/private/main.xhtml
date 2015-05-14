@@ -60,6 +60,15 @@
                 </p:panelGrid>
             </f:facet>
 
+            <f:facet name="footer">
+                <ez:table id="docs" header="Документы" dialogHeader="Документ"
+                          items="#{indigentDocs.items}" selected="#{indigentDocs.selected}"
+                          create="#{indigentDocs.create()}" save="#{indigentDocs.save()}" delete="#{indigentDocs.delete()}" cancel="#{indigentDocs.cancel()}" refresh="#{indigentDocs.refresh()}">
+                    
+                    <f:facet name="dialog">dasfa</f:facet>
+                </ez:table>
+            </f:facet>
+
         </ez:table>
     </ui:define>
 
