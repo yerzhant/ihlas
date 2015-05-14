@@ -4,49 +4,27 @@
                 template="../WEB-INF/templates/main.xhtml"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:ez="http://xmlns.jcp.org/jsf/composite/ezcomp">
 
     <ui:define name="title">Типы заявлений</ui:define>
 
     <ui:define name="body">
-        <p:panel header="Типы заявлений">
+        <ez:table header="Типы заявлений" dialogHeader="Тип заявления"
+                  items="#{appTypes.items}" selected="#{appTypes.selected}"
+                  create="#{appTypes.create()}" save="#{appTypes.save()}" delete="#{appTypes.delete()}" cancel="#{appTypes.cancel()}" refresh="#{appTypes.refresh()}">
 
-            <h:form id="tableForm">
-                <p:dataTable id="table" value="#{appTypes.items}" rowKey="#{item.id}" selection="#{appTypes.selected}" selectionMode="single" var="item" emptyMessage="Нет данных">
+            <p:column headerText="Наименование">
+                #{item.name}
+            </p:column>
 
-                    <p:column headerText="Наименование">
-                        #{item.name}
-                    </p:column>
+            <f:facet name="dialog">
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="name" value="Наименование" />
+                    <p:inputText id="name" value="#{appTypes.selected.name}" />
+                </p:panelGrid>
+            </f:facet>
 
-                    <f:facet name="footer">
-                        <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{appTypes.create()}" update="dlgForm" oncomplete="PF('dlg').show()" />
-                        <p:commandButton value="Редактировать" icon="ui-icon-pencil" update="dlgForm" oncomplete="PF('dlg').show()" id="editButton" disabled="#{empty appTypes.selected}" />
-                        <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{appTypes.delete()}" update="@form" id="deleteButton" disabled="#{empty appTypes.selected}">
-                            <p:confirm message="Удалить запись?" icon="ui-icon-alert" />
-                        </p:commandButton>                            
-                        <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{appTypes.refresh()}" update="@form" />
-                    </f:facet>
-
-                    <p:ajax event="rowSelect" update="editButton deleteButton" />
-                    <p:ajax event="rowUnselect" update="editButton deleteButton" />
-
-                </p:dataTable>
-            </h:form>
-
-            <p:dialog widgetVar="dlg" modal="true" appendTo="@(body)">
-                <h:form id="dlgForm">
-                    <h:panelGroup>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel for="name" value="Наименование" />
-                            <p:inputText id="name" value="#{appTypes.selected.name}" />
-                        </p:panelGrid>
-                        <p:commandButton value="Сохранить" actionListener="#{appTypes.save()}" update=":tableForm" oncomplete="PF('dlg').hide()" />
-                        <p:commandButton value="Отменить" actionListener="#{appTypes.cancel()}" onclick="dlg.hide()" immediate="true" />
-                    </h:panelGroup>
-                </h:form>
-            </p:dialog>
-
-        </p:panel>
+        </ez:table>
     </ui:define>
 
 </ui:composition>
