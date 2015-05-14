@@ -43,13 +43,13 @@
                 </p:dataTable>
             </h:form>
 
-            <p:dialog widgetVar="dlg" modal="true" appendTo="@(body)" header="#{cc.attrs.dialogHeader}">
+            <p:dialog id="dlg" widgetVar="dlg" modal="true" appendTo="@(body)" header="#{cc.attrs.dialogHeader}">
                 <h:form id="dlgForm">
                     <cc:renderFacet name="dialog" />
 
                     <p:spacer height="30" width="0" />
 
-                    <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update=":#{cc.id}:tableForm" oncomplete="PF('dlg').hide()" icon="ui-icon-disk" />
+                    <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update=":#{cc.id}:tableForm @form" oncomplete="save(args, 'dlg')" icon="ui-icon-disk" />
                     <p:commandButton value="Отменить" actionListener="#{cc.attrs.cancel}" onclick="dlg.hide()" immediate="true" icon="ui-icon-cancel" />
                 </h:form>
             </p:dialog>

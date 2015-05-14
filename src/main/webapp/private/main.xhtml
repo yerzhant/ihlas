@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../WEB-INF/templates/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ez="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <ui:define name="title">Главная</ui:define>
+
+    <ui:define name="body">
+        <ez:table header="Нуждающиеся" dialogHeader="Наждающийся"
+                  items="#{indigents.items}" selected="#{indigents.selected}"
+                  create="#{indigents.create()}" save="#{indigents.save()}" delete="#{indigents.delete()}" cancel="#{indigents.cancel()}" refresh="#{indigents.refresh()}">
+
+            <p:column headerText="Фамилия">
+                #{item.lastName}
+            </p:column>
+
+            <p:column headerText="Имя">
+                #{item.firstName}
+            </p:column>
+
+            <f:facet name="dialog">
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="lastName" value="Фамилия" />
+                    <p:inputText id="lastName" value="#{indigents.selected.lastName}" />
+
+                    <p:outputLabel for="firstName" value="Имя" />
+                    <p:inputText id="firstName" value="#{indigents.selected.firstName}" />
+                </p:panelGrid>
+            </f:facet>
+
+        </ez:table>
+    </ui:define>
+
+</ui:composition>
