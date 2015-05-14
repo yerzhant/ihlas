@@ -21,7 +21,9 @@
                     <f:facet name="footer">
                         <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{appTypes.create()}" update="dlgForm" oncomplete="PF('dlg').show()" />
                         <p:commandButton value="Редактировать" icon="ui-icon-pencil" update="dlgForm" oncomplete="PF('dlg').show()" id="editButton" disabled="#{empty appTypes.selected}" />
-                        <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{appTypes.delete()}" update="@form" id="deleteButton" disabled="#{empty appTypes.selected}" />
+                        <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{appTypes.delete()}" update="@form" id="deleteButton" disabled="#{empty appTypes.selected}">
+                            <p:confirm message="Удалить запись?" icon="ui-icon-alert" />
+                        </p:commandButton>                            
                         <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{appTypes.refresh()}" update="@form" />
                     </f:facet>
 

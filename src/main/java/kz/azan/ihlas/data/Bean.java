@@ -25,7 +25,11 @@ public abstract class Bean<T> {
         entityClass = c;
     }
 
-    public void save(T entity) {
+    public void create(T entity) {
+        em.persist(entity);
+    }
+
+    public void edit(T entity) {
         em.merge(entity);
     }
 

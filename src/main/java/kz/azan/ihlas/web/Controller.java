@@ -35,11 +35,11 @@ public abstract class Controller<T> implements Serializable {
     }
 
     public void save() {
-        getBean().save(selected);
+        getBean().edit(selected);
         if (isNew) {
-            items = null;
             selected = null;
             isNew = false;
+            items = null;
         }
     }
 
@@ -60,6 +60,7 @@ public abstract class Controller<T> implements Serializable {
     public void refresh() {
         getBean().refresh();
         selected = null;
+        isNew = false;
         items = null;
     }
 
