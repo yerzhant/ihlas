@@ -23,12 +23,26 @@ public class Indigents extends Controller<Indigent> {
     @Inject
     private IndigentBean bean;
 
+    private String filter;
+
     public Indigents() {
         super(Indigent.class);
+    }
+
+    public void filter() {
+        items = bean.filter(filter);
     }
 
     @Override
     protected Bean getBean() {
         return bean;
+    }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
     }
 }

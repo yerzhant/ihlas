@@ -31,10 +31,12 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "indigents")
 @NamedQueries({
-    @NamedQuery(name = "Indigent.findAll", query = "SELECT i FROM Indigent i")})
+    @NamedQuery(name = Indigent.FILTER, query = "SELECT i FROM Indigent i WHERE UPPER(i.lastName) LIKE '%' || UPPER(:code) || '%'")})
 public class Indigent implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public static final String FILTER = "Indigents.filter";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

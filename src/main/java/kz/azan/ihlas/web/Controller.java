@@ -19,7 +19,7 @@ public abstract class Controller<T> implements Serializable {
 
     private final Class<T> entityClass;
 
-    private List<T> items;
+    protected List<T> items;
 
     private T selected;
 

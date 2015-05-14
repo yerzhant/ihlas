@@ -18,9 +18,10 @@
             </p:column>
 
             <f:facet name="dialog">
-                <p:panelGrid columns="2">
+                <p:panelGrid columns="3">
                     <p:outputLabel for="name" value="Наименование" />
                     <p:inputText id="name" value="#{docTypes.selected.name}" />
+                    <p:message for="name" />
                 </p:panelGrid>
             </f:facet>
 

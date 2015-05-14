@@ -17,7 +17,7 @@ import javax.persistence.EntityManager;
 public abstract class Bean<T> {
 
     @Inject
-    EntityManager em;
+    protected EntityManager em;
 
     private final Class<T> entityClass;
 
