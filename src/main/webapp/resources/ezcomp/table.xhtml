@@ -26,7 +26,7 @@
                 <cc:insertChildren />
 
                 <f:facet name="footer">
-                    <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{cc.attrs.create}" update=":#{cc.id}:dlgForm" oncomplete="PF('#{cc.id}Dlg').show()" id="createButton" />
+                    <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{cc.attrs.create}" update="#{cc.id}:dlgForm" oncomplete="PF('#{cc.id}Dlg').show()" id="createButton" />
                     <p:commandButton value="Редактировать" icon="ui-icon-pencil" update="#{cc.id}:dlgForm" oncomplete="PF('#{cc.id}Dlg').show()" id="editButton" disabled="#{empty cc.attrs.selected}" />
                     <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{cc.attrs.delete}" update="@form" id="deleteButton" disabled="#{empty cc.attrs.selected}">
                         <p:confirm message="Удалить запись?" icon="ui-icon-alert" />
@@ -40,11 +40,11 @@
             </p:dataTable>
         </h:form>
 
-        <p:dialog id="dlg" widgetVar="#{cc.id}Dlg" modal="true" appendTo="@(body)" header="#{cc.attrs.dialogHeader}">
+        <p:dialog widgetVar="#{cc.id}Dlg" modal="true" appendTo="@(body)" header="#{cc.attrs.dialogHeader}">
             <h:form id="dlgForm">
                 <cc:renderFacet name="dialog" />
 
-                <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update=":#{cc.id}:tableForm @form" oncomplete="save(args, '#{cc.id}Dlg')" icon="ui-icon-disk" />
+                <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update="#{cc.id}:tableForm @form" oncomplete="save(args, '#{cc.id}Dlg')" icon="ui-icon-disk" />
                 <p:commandButton value="Отменить" actionListener="#{cc.attrs.cancel}" onclick="PF('#{cc.id}Dlg').hide()" immediate="true" icon="ui-icon-cancel" />
             </h:form>
         </p:dialog>
