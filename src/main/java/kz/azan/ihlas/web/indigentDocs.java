@@ -32,10 +32,6 @@ public class indigentDocs extends Controller<Doc> {
     public indigentDocs() {
         super(Doc.class);
     }
-    
-    public Doc getSel() {
-        return null;
-    }
 
     public void handleFile(FileUploadEvent e) {
         getSelected().setImage(e.getFile().getContents());

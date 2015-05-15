@@ -79,7 +79,7 @@
                     <f:facet name="dialog">
                         <p:panelGrid columns="3">
                             <p:outputLabel for="docType" value="Тип" />
-                            <p:selectOneMenu id="docType" value="#{indigentDocs.selected.docType}">
+                            <p:selectOneMenu id="docType" value="#{indigentDocs.selected.docType}" rendered="#{not empty indigentDocs.selected}">
                                 <f:selectItems value="#{docTypes.is}"
                                                var="docTypeItem"
                                                itemValue="#{docTypeItem}"/>
