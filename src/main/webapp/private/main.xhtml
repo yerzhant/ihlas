@@ -62,39 +62,44 @@
                 </f:facet>
 
             </ez:table>
-        </p:panel>
 
-        <p:panel header="Документы">
-            <ez:table id="docs" dialogHeader="Документ"
-                      items="#{indigentDocs.items}" selected="#{indigentDocs.selected}"
-                      create="#{indigentDocs.create()}" save="#{indigentDocs.save()}" delete="#{indigentDocs.delete()}" cancel="#{indigentDocs.cancel()}" refresh="#{indigentDocs.refresh()}">
+            <p:panel header="Документы">
+                <ez:table id="docs" dialogHeader="Документ"
+                          items="#{indigentDocs.items}" selected="#{indigentDocs.selected}"
+                          create="#{indigentDocs.create()}" save="#{indigentDocs.save()}" delete="#{indigentDocs.delete()}" cancel="#{indigentDocs.cancel()}" refresh="#{indigentDocs.refresh()}">
 
-                <p:column headerText="Тип">
-                    #{item.docType}
-                </p:column>
+                    <p:column headerText="Тип">
+                        #{item.docType}
+                    </p:column>
 
-                <p:column headerText="Примечания">
-                    #{item.notes}
-                </p:column>
+                    <p:column headerText="Примечания">
+                        #{item.notes}
+                    </p:column>
 
-                <f:facet name="dialog">
-                    <p:panelGrid columns="3">
-                        <p:outputLabel for="docType" value="Тип" />
-                        <p:inputText id="docType" value="#{indigentDocs.selected.docType}" />
-                        <p:message for="docType" />
+                    <f:facet name="dialog">
+                        <p:panelGrid columns="3">
+                            <p:outputLabel for="docType" value="Тип" />
+                            <p:selectOneMenu id="docType" value="#{indigentDocs.selected.docType}">
+                                <f:selectItems value="#{docTypes.is}"
+                                               var="docTypeItem"
+                                               itemValue="#{docTypeItem}"/>
+                            </p:selectOneMenu>
+                            <p:message for="docType" />
 
-                        <p:outputLabel for="notes" value="Примечания" />
-                        <p:inputText id="notes" value="#{indigentDocs.selected.notes}" />
-                        <p:message for="notes" />
+                            <p:outputLabel for="notes" value="Примечания" />
+                            <p:inputText id="notes" value="#{indigentDocs.selected.notes}" />
+                            <p:message for="notes" />
 
-                        <p:outputLabel for="image" value="Документ" />
-                        <p:message for="image" />
-                    </p:panelGrid>
+                            <p:outputLabel for="image" value="Документ" />
+                            <p:graphicImage id="image" value="#{indigentDocs.image}" />
+                            <p:message for="image" />
+                        </p:panelGrid>
 
-                    <p:fileUpload id="image" fileUploadListener="#{indigentDocs.handleFile(e)}" auto="true" />
-                </f:facet>
+                        <p:fileUpload id="uploader" fileUploadListener="#{indigentDocs.handleFile}" auto="true" update="image" />
+                    </f:facet>
 
-            </ez:table>
+                </ez:table>
+            </p:panel>
         </p:panel>
     </ui:define>
 

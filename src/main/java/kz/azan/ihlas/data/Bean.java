@@ -41,6 +41,10 @@ public abstract class Bean<T> {
         em.getEntityManagerFactory().getCache().evict(entityClass);
     }
 
+    public T find(Object id) {
+        return em.find(entityClass, id);
+    }
+
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
