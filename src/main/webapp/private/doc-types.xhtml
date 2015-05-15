@@ -9,23 +9,25 @@
     <ui:define name="title">Типы документов</ui:define>
 
     <ui:define name="body">
-        <ez:table header="Типы документов" dialogHeader="Тип документа"
-                  items="#{docTypes.items}" selected="#{docTypes.selected}"
-                  create="#{docTypes.create()}" save="#{docTypes.save()}" delete="#{docTypes.delete()}" cancel="#{docTypes.cancel()}" refresh="#{docTypes.refresh()}">
+        <p:panel header="Типы документов">
+            <ez:table dialogHeader="Тип документа"
+                      items="#{docTypes.items}" selected="#{docTypes.selected}"
+                      create="#{docTypes.create()}" save="#{docTypes.save()}" delete="#{docTypes.delete()}" cancel="#{docTypes.cancel()}" refresh="#{docTypes.refresh()}">
 
-            <p:column headerText="Наименование">
-                #{item.name}
-            </p:column>
+                <p:column headerText="Наименование">
+                    #{item.name}
+                </p:column>
 
-            <f:facet name="dialog">
-                <p:panelGrid columns="3">
-                    <p:outputLabel for="name" value="Наименование" />
-                    <p:inputText id="name" value="#{docTypes.selected.name}" />
-                    <p:message for="name" />
-                </p:panelGrid>
-            </f:facet>
+                <f:facet name="dialog">
+                    <p:panelGrid columns="3">
+                        <p:outputLabel for="name" value="Наименование" />
+                        <p:inputText id="name" value="#{docTypes.selected.name}" />
+                        <p:message for="name" />
+                    </p:panelGrid>
+                </f:facet>
 
-        </ez:table>
+            </ez:table>
+        </p:panel>
     </ui:define>
 
 </ui:composition>

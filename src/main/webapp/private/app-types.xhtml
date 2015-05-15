@@ -9,23 +9,25 @@
     <ui:define name="title">Типы заявлений</ui:define>
 
     <ui:define name="body">
-        <ez:table header="Типы заявлений" dialogHeader="Тип заявления"
-                  items="#{appTypes.items}" selected="#{appTypes.selected}"
-                  create="#{appTypes.create()}" save="#{appTypes.save()}" delete="#{appTypes.delete()}" cancel="#{appTypes.cancel()}" refresh="#{appTypes.refresh()}">
+        <p:panel header="Типы заявлений">
+            <ez:table dialogHeader="Тип заявления"
+                      items="#{appTypes.items}" selected="#{appTypes.selected}"
+                      create="#{appTypes.create()}" save="#{appTypes.save()}" delete="#{appTypes.delete()}" cancel="#{appTypes.cancel()}" refresh="#{appTypes.refresh()}">
 
-            <p:column headerText="Наименование">
-                #{item.name}
-            </p:column>
+                <p:column headerText="Наименование">
+                    #{item.name}
+                </p:column>
 
-            <f:facet name="dialog">
-                <p:panelGrid columns="3">
-                    <p:outputLabel for="name" value="Наименование" />
-                    <p:inputText id="name" value="#{appTypes.selected.name}" />
-                    <p:message for="name" />
-                </p:panelGrid>
-            </f:facet>
+                <f:facet name="dialog">
+                    <p:panelGrid columns="3">
+                        <p:outputLabel for="name" value="Наименование" />
+                        <p:inputText id="name" value="#{appTypes.selected.name}" />
+                        <p:message for="name" />
+                    </p:panelGrid>
+                </f:facet>
 
-        </ez:table>
+            </ez:table>
+        </p:panel>
     </ui:define>
 
 </ui:composition>

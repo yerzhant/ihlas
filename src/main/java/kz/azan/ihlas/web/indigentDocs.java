@@ -11,6 +11,7 @@ import javax.inject.Named;
 import kz.azan.ihlas.data.DocBean;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.Doc;
+import org.primefaces.event.FileUploadEvent;
 
 /**
  *
@@ -25,6 +26,10 @@ public class indigentDocs extends Controller<Doc> {
 
     public indigentDocs() {
         super(Doc.class);
+    }
+    
+    public void handleFile(FileUploadEvent e) {
+        getSelected().setImage(e.getFile().getContents());
     }
 
     @Override
