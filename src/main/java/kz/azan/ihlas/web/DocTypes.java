@@ -5,7 +5,6 @@
  */
 package kz.azan.ihlas.web;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
@@ -32,11 +31,6 @@ public class DocTypes extends Controller<DocType> {
 
     public DocTypes() {
         super(DocType.class);
-    }
-
-    
-    public List<DocType> getIs() {
-        return super.getItems();
     }
 
     @Override

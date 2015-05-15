@@ -80,9 +80,9 @@
                         <p:panelGrid columns="3">
                             <p:outputLabel for="docType" value="Тип" />
                             <p:selectOneMenu id="docType" value="#{indigentDocs.selected.docType}" rendered="#{not empty indigentDocs.selected}">
-                                <f:selectItems value="#{docTypes.is}"
-                                               var="docTypeItem"
-                                               itemValue="#{docTypeItem}"/>
+                                <f:selectItems value="#{docTypes.items}"
+                                               var="item"
+                                               itemValue="#{item}"/>
                             </p:selectOneMenu>
                             <p:message for="docType" />
 

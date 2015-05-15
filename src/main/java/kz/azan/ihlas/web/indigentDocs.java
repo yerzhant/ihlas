@@ -12,7 +12,6 @@ import javax.inject.Named;
 import kz.azan.ihlas.data.DocBean;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.Doc;
-import kz.azan.ihlas.model.DocType;
 import kz.azan.ihlas.util.Util;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.ByteArrayContent;
