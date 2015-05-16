@@ -8,7 +8,6 @@ package kz.azan.ihlas.web;
 import java.io.Serializable;
 import java.util.List;
 import kz.azan.ihlas.data.Bean;
-import kz.azan.ihlas.util.Util;
 
 /**
  *
@@ -17,8 +16,6 @@ import kz.azan.ihlas.util.Util;
  */
 public abstract class Controller<T> implements Serializable {
 
-    private final Class<T> entityClass;
-
     protected List<T> items;
 
     private T selected;
@@ -26,12 +23,8 @@ public abstract class Controller<T> implements Serializable {
     private boolean isNew = false;
 
     public void create() {
-        try {
-            selected = entityClass.newInstance();
-            isNew = true;
-        } catch (InstantiationException | IllegalAccessException ex) {
-            Util.addError(ex);
-        }
+        selected = createEntity();
+        isNew = true;
     }
 
     public void save() {
@@ -64,15 +57,9 @@ public abstract class Controller<T> implements Serializable {
         items = null;
     }
 
-    public Controller() {
-        entityClass = null;
-    }
-
-    public Controller(Class<T> c) {
-        entityClass = c;
-    }
-
     protected abstract Bean getBean();
+
+    protected abstract T createEntity();
 
     public List<T> getItems() {
         if (items == null) {

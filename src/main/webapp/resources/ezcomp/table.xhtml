@@ -10,12 +10,13 @@
     <cc:interface>
         <cc:attribute name="items" />
         <cc:attribute name="selected" />
+        <cc:attribute name="dialogHeader" />
+        <cc:attribute name="updateOnSelect" />
         <cc:attribute name="create" method-signature="void ()" />
         <cc:attribute name="save" method-signature="void ()" />
         <cc:attribute name="delete" method-signature="void ()" />
         <cc:attribute name="cancel" method-signature="void ()" />
         <cc:attribute name="refresh" method-signature="void ()" />
-        <cc:attribute name="dialogHeader" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
@@ -34,8 +35,8 @@
                     <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{cc.attrs.refresh}" update="@form" />
                 </f:facet>
 
-                <p:ajax event="rowSelect" update="editButton deleteButton" />
-                <p:ajax event="rowUnselect" update="editButton deleteButton" />
+                <p:ajax event="rowSelect" update="editButton deleteButton #{cc.attrs.updateOnSelect}" />
+                <!--<p:ajax event="rowUnselect" update="editButton deleteButton" />-->
 
             </p:dataTable>
         </h:form>

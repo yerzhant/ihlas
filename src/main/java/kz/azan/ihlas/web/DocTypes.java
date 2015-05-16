@@ -29,13 +29,14 @@ public class DocTypes extends Controller<DocType> {
     @Inject
     private DocTypeBean bean;
 
-    public DocTypes() {
-        super(DocType.class);
-    }
-
     @Override
     protected Bean getBean() {
         return bean;
+    }
+
+    @Override
+    protected DocType createEntity() {
+        return new DocType();
     }
 
     @FacesConverter(forClass = DocType.class)

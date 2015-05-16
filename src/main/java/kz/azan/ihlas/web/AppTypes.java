@@ -23,12 +23,14 @@ public class AppTypes extends Controller<AppType> {
     @Inject
     private AppTypeBean bean;
 
-    public AppTypes() {
-        super(AppType.class);
-    }
-
     @Override
     protected Bean getBean() {
         return bean;
     }
+
+    @Override
+    protected AppType createEntity() {
+        return new AppType();
+    }
+
 }
