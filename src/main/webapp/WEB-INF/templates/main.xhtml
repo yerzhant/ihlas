@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,8 +19,8 @@
 
         <p:confirmDialog global="true" header="Подтверждение" showEffect="fold" hideEffect="clip">
             <h:form>
-            <p:commandButton value="Да" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-            <p:commandButton value="Нет" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                <p:commandButton value="Да" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="Нет" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
             </h:form>
         </p:confirmDialog>
 
@@ -42,9 +43,15 @@
                             <p:menuitem value="Типы документов" outcome="doc-types.xhtml" />
                         </p:submenu>
                         <p:menuitem value="Безопасность" outcome="main.xhtml" icon="ui-icon-person" />
+
+                        <f:facet name="options">
+                            <p:themeSwitcher>
+                                <f:selectItems value="[afterdark, afternoon, afterwork, aristo, black-tie, blitzer, bluesky, bootstrap, casablanca, cupertino, cruze, dark-hive, delta, dot-luv, eggplant, excite-bike, flick, glass-x, home, hot-sneaks, humanity, le-frog, midnight, mint-choc, overcast, pepper-grinder, redmond, rocket, sam, smoothness, south-street, start, sunny, swanky-purse, trontastic, ui-darkness, ui-lightness, vader]" var="theme" itemLabel="" itemValue=""/>
+                            </p:themeSwitcher>
+                        </f:facet>
                     </p:menubar>
                 </h:form>
-                
+
                 <ui:insert name="body" />
             </p:layoutUnit>
 
