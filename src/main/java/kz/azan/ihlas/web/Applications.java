@@ -7,12 +7,14 @@ package kz.azan.ihlas.web;
 
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import javax.inject.Named;
 import kz.azan.ihlas.data.ApplicationBean;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.Application;
+import kz.azan.ihlas.web.event.AppEvent;
 import kz.azan.ihlas.web.event.IndigentEvent;
 import kz.azan.ihlas.web.event.Selection;
 
@@ -30,9 +32,19 @@ public class Applications extends Controller<Application> {
     @Inject
     private Indigents indigents;
 
+    @Inject
+    @Selection
+    private Event<AppEvent> selection;
+
     public void indigentSelected(@Observes @Selection IndigentEvent event) {
         items = null;
         setSelected(null);
+    }
+
+    @Override
+    public void setSelected(Application selected) {
+        super.setSelected(selected);
+        selection.fire(new AppEvent(selected));
     }
 
     @Override
