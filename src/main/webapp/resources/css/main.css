@@ -12,3 +12,34 @@ and open the template in the editor.
     width: 600px;
     height: 600px;
 }
+
+.date {
+    width: 10%;
+    text-align: center;
+}
+
+.doc-type, .app-type {
+    width: 20%;
+}
+
+.nbr {
+    width: 5%;
+    text-align: center;
+}
+
+.dialog-footer {
+    padding: 4px 10px;
+}
+
+.ui-datatable-footer {
+    text-align: left !important;
+}
+
+.ui-panel {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.body {
+    padding-top: 20px;
+}

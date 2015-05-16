@@ -46,8 +46,10 @@
             <h:form id="dlgForm">
                 <cc:renderFacet name="dialog" />
 
-                <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update="#{cc.id}:tableForm:table @form" oncomplete="save(args, '#{cc.id}Dlg')" icon="ui-icon-disk" />
-                <p:commandButton value="Отменить" actionListener="#{cc.attrs.cancel}" onclick="PF('#{cc.id}Dlg').hide()" immediate="true" icon="ui-icon-cancel" />
+                <h:panelGroup class="dialog-footer" layout="block">
+                    <p:commandButton value="Сохранить" actionListener="#{cc.attrs.save}" update="#{cc.id}:tableForm:table @form" oncomplete="save(args, '#{cc.id}Dlg')" icon="ui-icon-disk" />
+                    <p:commandButton value="Отменить" actionListener="#{cc.attrs.cancel}" onclick="PF('#{cc.id}Dlg').hide()" immediate="true" icon="ui-icon-cancel" />
+                </h:panelGroup>
             </h:form>
         </p:dialog>
     </cc:implementation>
