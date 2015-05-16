@@ -5,7 +5,6 @@
  */
 package kz.azan.ihlas.web;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
@@ -35,13 +34,6 @@ public class DocTypes extends Controller<DocType> {
     }
 
     @Override
-    public List<DocType> getItems() {
-        return super.getItems(); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-
-    @Override
     protected Bean getBean() {
         return bean;
     }
@@ -51,12 +43,10 @@ public class DocTypes extends Controller<DocType> {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
-            System.out.println("OBJ");
             if (value == null || value.length() == 0) {
                 return null;
             }
             DocTypes controller = (DocTypes) facesContext.getApplication().getELResolver().getValue(facesContext.getELContext(), null, "docTypes");
-            System.out.println(value + " = " + getKey(value));
             return controller.bean.find(getKey(value));
         }
 
@@ -74,13 +64,11 @@ public class DocTypes extends Controller<DocType> {
 
         @Override
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
-            System.out.println("STR");
             if (object == null) {
                 return null;
             }
             if (object instanceof DocType) {
                 DocType o = (DocType) object;
-                System.out.println("ID = " + o.getId());
                 return getStringKey(o.getId());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), DocType.class.getName()});
