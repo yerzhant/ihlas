@@ -64,7 +64,7 @@
 
             </ez:table>
 
-            <p:panel header="Документы" toggleable="true" collapsed="false">
+            <p:panel header="Документы" toggleable="true" collapsed="true">
                 <ez:table id="indigentDocs" dialogHeader="Документ" disableButtons="#{empty indigents.selected}"
                           items="#{indigentDocs.items}" selected="#{indigentDocs.selected}"
                           create="#{indigentDocs.create()}" save="#{indigentDocs.save()}" delete="#{indigentDocs.delete()}" cancel="#{indigentDocs.cancel()}" refresh="#{indigentDocs.refresh()}">
@@ -94,7 +94,7 @@
                             <p:message for="image" />
                         </p:panelGrid>
 
-                        <p:fileUpload id="uploader" fileUploadListener="#{indigentDocs.handleFile}" auto="true" update="image" />
+                        <p:fileUpload id="uploader" fileUploadListener="#{indigentDocs.handleFile}" auto="true" update="image" label="Выбрать файл" />
                     </f:facet>
 
                 </ez:table>
@@ -176,7 +176,7 @@
                             <p:message for="image" />
                         </p:panelGrid>
 
-                        <p:fileUpload id="uploader" fileUploadListener="#{appDocs.handleFile}" auto="true" update="image" />
+                        <p:fileUpload id="uploader" fileUploadListener="#{appDocs.handleFile}" auto="true" update="image" label="Выбрать файл" />
                     </f:facet>
 
                 </ez:table>

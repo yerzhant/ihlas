@@ -17,6 +17,7 @@ public class IndigentBean extends Bean<Indigent> {
     }
 
     public List<Indigent> filter(String filter) {
+        filter = filter == null ? "" : filter;
         return em.createNamedQuery(Indigent.FILTER).setParameter("code", filter).getResultList();
     }
 }
