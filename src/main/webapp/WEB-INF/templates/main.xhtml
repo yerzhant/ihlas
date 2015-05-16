@@ -17,8 +17,10 @@
         <p:growl autoUpdate="true" />
 
         <p:confirmDialog global="true" header="Подтверждение" showEffect="fold" hideEffect="clip">
+            <h:form>
             <p:commandButton value="Да" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
             <p:commandButton value="Нет" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+            </h:form>
         </p:confirmDialog>
 
         <p:dialog widgetVar="status" modal="true" closable="false" resizable="false">
@@ -42,8 +44,6 @@
                     </p:menubar>
                 </h:form>
                 
-                <p:spacer height="0" width="0" />
-
                 <ui:insert name="body" />
             </p:layoutUnit>
 

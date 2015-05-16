@@ -47,19 +47,7 @@ public class DocTypes extends Controller<DocType> {
                 return null;
             }
             DocTypes controller = (DocTypes) facesContext.getApplication().getELResolver().getValue(facesContext.getELContext(), null, "docTypes");
-            return controller.bean.find(getKey(value));
-        }
-
-        java.lang.Integer getKey(String value) {
-            java.lang.Integer key;
-            key = Integer.valueOf(value);
-            return key;
-        }
-
-        String getStringKey(java.lang.Integer value) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(value);
-            return sb.toString();
+            return controller.bean.find(Integer.valueOf(value));
         }
 
         @Override
@@ -69,7 +57,7 @@ public class DocTypes extends Controller<DocType> {
             }
             if (object instanceof DocType) {
                 DocType o = (DocType) object;
-                return getStringKey(o.getId());
+                return String.valueOf(o.getId());
             } else {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), DocType.class.getName()});
                 return null;
