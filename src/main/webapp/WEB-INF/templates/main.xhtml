@@ -45,8 +45,9 @@
                         <p:menuitem value="Безопасность" outcome="main.xhtml" icon="ui-icon-person" />
 
                         <f:facet name="options">
-                            <p:themeSwitcher>
-                                <f:selectItems value="[afterdark, afternoon, afterwork, aristo, black-tie, blitzer, bluesky, bootstrap, casablanca, cupertino, cruze, dark-hive, delta, dot-luv, eggplant, excite-bike, flick, glass-x, home, hot-sneaks, humanity, le-frog, midnight, mint-choc, overcast, pepper-grinder, redmond, rocket, sam, smoothness, south-street, start, sunny, swanky-purse, trontastic, ui-darkness, ui-lightness, vader]" var="theme" itemLabel="" itemValue=""/>
+                            <p:themeSwitcher value="#{themeSwitcher.theme}">
+                                <f:selectItems value="#{themeSwitcher.themes}"/>
+                                <p:ajax />
                             </p:themeSwitcher>
                         </f:facet>
                     </p:menubar>
