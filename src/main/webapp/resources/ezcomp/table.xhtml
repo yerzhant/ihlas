@@ -12,6 +12,7 @@
         <cc:attribute name="selected" />
         <cc:attribute name="dialogHeader" />
         <cc:attribute name="updateOnSelect" />
+        <cc:attribute name="disableButtons" />
         <cc:attribute name="create" method-signature="void ()" />
         <cc:attribute name="save" method-signature="void ()" />
         <cc:attribute name="delete" method-signature="void ()" />
@@ -27,16 +28,16 @@
                 <cc:insertChildren />
 
                 <f:facet name="footer">
-                    <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{cc.attrs.create}" update="#{cc.id}:dlgForm" oncomplete="PF('#{cc.id}Dlg').show()" id="createButton" />
+                    <p:commandButton value="Добавить" icon="ui-icon-plus" actionListener="#{cc.attrs.create}" update="#{cc.id}:dlgForm" oncomplete="PF('#{cc.id}Dlg').show()" id="createButton" disabled="#{cc.attrs.disableButtons}" />
                     <p:commandButton value="Редактировать" icon="ui-icon-pencil" update="#{cc.id}:dlgForm" process="#{cc.id}:dlgForm" oncomplete="PF('#{cc.id}Dlg').show()" id="editButton" disabled="#{empty cc.attrs.selected}" />
                     <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{cc.attrs.delete}" update="@form" id="deleteButton" disabled="#{empty cc.attrs.selected}">
                         <p:confirm message="Удалить запись?" icon="ui-icon-alert" />
                     </p:commandButton>                            
-                    <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{cc.attrs.refresh}" update="@form" />
+                    <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{cc.attrs.refresh}" update="@form" disabled="#{cc.attrs.disableButtons}" />
                 </f:facet>
 
                 <p:ajax event="rowSelect" update="editButton deleteButton #{cc.attrs.updateOnSelect}" />
-                <p:ajax event="rowUnselect" update="editButton deleteButton" />
+                <p:ajax event="rowUnselect" update="editButton deleteButton #{cc.attrs.updateOnSelect}" />
 
             </p:dataTable>
         </h:form>
