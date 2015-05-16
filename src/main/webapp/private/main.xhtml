@@ -19,7 +19,7 @@
         </h:form>
 
         <p:panel header="Нуждающиеся">
-            <ez:table id="indigents" dialogHeader="Наждающийся" updateOnSelect="docs:tableForm:table"
+            <ez:table id="indigents" dialogHeader="Наждающийся" updateOnSelect="docs:tableForm:table applications:tableForm:table"
                       items="#{indigents.items}" selected="#{indigents.selected}"
                       create="#{indigents.create()}" save="#{indigents.save()}" delete="#{indigents.delete()}" cancel="#{indigents.cancel()}" refresh="#{indigents.refresh()}">
 
@@ -64,7 +64,7 @@
             </ez:table>
 
             <p:panel header="Документы" toggleable="true" collapsed="false">
-                <ez:table id="docs" dialogHeader="Документ"
+                <ez:table id="docs" dialogHeader="Документ" disableButtons="#{empty indigents.selected}"
                           items="#{indigentDocs.items}" selected="#{indigentDocs.selected}"
                           create="#{indigentDocs.create()}" save="#{indigentDocs.save()}" delete="#{indigentDocs.delete()}" cancel="#{indigentDocs.cancel()}" refresh="#{indigentDocs.refresh()}">
 
@@ -100,6 +100,53 @@
 
                 </ez:table>
             </p:panel>
+
+        </p:panel>
+
+        <p:panel header="Заявления">
+            <ez:table id="applications" dialogHeader="Заявление" disableButtons="#{empty indigents.selected}" updateOnSelect="docs:tableForm:table"
+                      items="#{applications.items}" selected="#{applications.selected}"
+                      create="#{applications.create()}" save="#{applications.save()}" delete="#{applications.delete()}" cancel="#{applications.cancel()}" refresh="#{applications.refresh()}">
+
+                <p:column headerText="№">
+                    #{item.id}
+                </p:column>
+
+                <p:column headerText="Дата подачи">
+                    <h:outputText value="#{item.appliedOn}">
+                        <f:convertDateTime locale="ru"/>
+                    </h:outputText>
+                </p:column>
+
+                <p:column headerText="Тип">
+                    #{item.appType}
+                </p:column>
+
+                <p:column headerText="Причина">
+                    #{item.reason}
+                </p:column>
+
+                <f:facet name="dialog">
+                    <p:panelGrid columns="3" rendered="#{not empty applications.selected}">
+                        <p:outputLabel for="appType" value="Тип" />
+                        <p:selectOneMenu id="appType" value="#{applications.selected.appType}">
+                            <f:selectItems value="#{appTypes.items}"/>
+                        </p:selectOneMenu>
+                        <p:message for="appType" />
+
+                        <p:outputLabel for="reason" value="Причина" />
+                        <p:inputText id="reason" value="#{applications.selected.reason}" />
+                        <p:message for="reason" />
+
+                        <p:outputLabel for="appliedOn" value="Дата подачи" />
+                        <p:calendar id="appliedOn" value="#{applications.selected.appliedOn}" mask="true" pattern="dd.MM.yyyy" />
+                        <p:message for="appliedOn" />
+                    </p:panelGrid>
+                </f:facet>
+
+            </ez:table>
+
+
         </p:panel>
     </ui:define>
 

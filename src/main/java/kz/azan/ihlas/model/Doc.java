@@ -12,7 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -27,13 +26,15 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "docs")
 @NamedQueries({
-    @NamedQuery(name = Doc.FIND_BY_INDIGENT, query = "SELECT d FROM Doc d WHERE d.indigent = :indigent")
+    @NamedQuery(name = Doc.FIND_BY_INDIGENT, query = "SELECT d FROM Doc d WHERE d.indigent = :indigent"),
+    @NamedQuery(name = Doc.FIND_BY_APPLICATION, query = "SELECT d FROM Doc d WHERE d.application = :application")
 })
 public class Doc implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     public static final String FIND_BY_INDIGENT = "Doc.findByIndigent";
+    public static final String FIND_BY_APPLICATION = "Doc.findByApplication";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,6 +7,7 @@ package kz.azan.ihlas.data;
 
 import java.util.List;
 import javax.ejb.Stateless;
+import kz.azan.ihlas.model.Application;
 import kz.azan.ihlas.model.Doc;
 import kz.azan.ihlas.model.Indigent;
 
@@ -17,7 +18,11 @@ public class DocBean extends Bean<Doc> {
         super(Doc.class);
     }
 
-    public List<Doc> getIndigentDocs(Indigent indigent) {
+    public List<Doc> find(Indigent indigent) {
         return em.createNamedQuery(Doc.FIND_BY_INDIGENT).setParameter("indigent", indigent).getResultList();
+    }
+
+    public List<Doc> find(Application application) {
+        return em.createNamedQuery(Doc.FIND_BY_APPLICATION).setParameter("application", application).getResultList();
     }
 }

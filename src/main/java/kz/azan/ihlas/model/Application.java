@@ -31,10 +31,13 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "applications")
 @NamedQueries({
-    @NamedQuery(name = "Application.findAll", query = "SELECT a FROM Application a")})
+    @NamedQuery(name = Application.FIND_BY_INDIGENT, query = "SELECT a FROM Application a WHERE a.indigent = :indigent")
+})
 public class Application implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public static final String FIND_BY_INDIGENT = "Application.findByIndigent";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

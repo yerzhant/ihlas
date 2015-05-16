@@ -5,8 +5,6 @@
  */
 package kz.azan.ihlas.web;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -60,10 +58,8 @@ public class DocTypes extends Controller<DocType> {
                 DocType o = (DocType) object;
                 return String.valueOf(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), DocType.class.getName()});
                 return null;
             }
         }
-
     }
 }

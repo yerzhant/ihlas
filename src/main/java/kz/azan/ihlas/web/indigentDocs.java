@@ -14,7 +14,6 @@ import javax.inject.Named;
 import kz.azan.ihlas.data.DocBean;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.Doc;
-import kz.azan.ihlas.model.Indigent;
 import kz.azan.ihlas.util.Util;
 import kz.azan.ihlas.web.event.IndigentEvent;
 import kz.azan.ihlas.web.event.Selection;
@@ -66,7 +65,7 @@ public class indigentDocs extends Controller<Doc> {
     @Override
     public List<Doc> getItems() {
         if (items == null) {
-            items = bean.getIndigentDocs(indigents.getSelected());
+            items = bean.find(indigents.getSelected());
         }
         return items;
     }
