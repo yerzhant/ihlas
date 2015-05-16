@@ -16,7 +16,8 @@ import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.Doc;
 import kz.azan.ihlas.model.Indigent;
 import kz.azan.ihlas.util.Util;
-import kz.azan.ihlas.web.event.Selected;
+import kz.azan.ihlas.web.event.IndigentEvent;
+import kz.azan.ihlas.web.event.Selection;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.ByteArrayContent;
 import org.primefaces.model.StreamedContent;
@@ -35,8 +36,9 @@ public class indigentDocs extends Controller<Doc> {
     @Inject
     private Indigents indigents;
 
-    public void indigentSelected(@Observes @Selected Indigent indigent) {
+    public void indigentSelected(@Observes @Selection IndigentEvent event) {
         items = null;
+        setSelected(null);
     }
 
     public void handleFile(FileUploadEvent e) {

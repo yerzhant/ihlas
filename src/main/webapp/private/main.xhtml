@@ -19,7 +19,7 @@
         </h:form>
 
         <p:panel header="Нуждающиеся">
-            <ez:table id="indigents" dialogHeader="Наждающийся" updateOnSelect="docs:tableForm"
+            <ez:table id="indigents" dialogHeader="Наждающийся" updateOnSelect="docs:tableForm:table"
                       items="#{indigents.items}" selected="#{indigents.selected}"
                       create="#{indigents.create()}" save="#{indigents.save()}" delete="#{indigents.delete()}" cancel="#{indigents.cancel()}" refresh="#{indigents.refresh()}">
 

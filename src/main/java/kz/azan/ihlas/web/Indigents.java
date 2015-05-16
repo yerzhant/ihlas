@@ -12,7 +12,8 @@ import javax.inject.Named;
 import kz.azan.ihlas.data.IndigentBean;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.Indigent;
-import kz.azan.ihlas.web.event.Selected;
+import kz.azan.ihlas.web.event.IndigentEvent;
+import kz.azan.ihlas.web.event.Selection;
 
 /**
  *
@@ -26,8 +27,8 @@ public class Indigents extends Controller<Indigent> {
     private IndigentBean bean;
 
     @Inject
-    @Selected
-    Event<Indigent> selectedEvent;
+    @Selection
+    private Event<IndigentEvent> selection;
 
     private String filter;
 
@@ -38,7 +39,7 @@ public class Indigents extends Controller<Indigent> {
     @Override
     public void setSelected(Indigent selected) {
         super.setSelected(selected);
-        selectedEvent.fire(selected);
+        selection.fire(new IndigentEvent(selected));
     }
 
     @Override
