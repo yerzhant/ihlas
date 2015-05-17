@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 
-///////// Fields
+/*Fields*/
 
 .date {
     width: 10%;
@@ -25,10 +25,10 @@ and open the template in the editor.
     text-align: center;
 }
 
-///////// Misc
+/*Misc*/
 
 .dialog-footer {
-    padding: 4px 10px;
+    padding: 10px 10px;
 }
 
 .doc {
@@ -41,7 +41,7 @@ and open the template in the editor.
     margin-right: 20px !important;
 }
 
-///////// UI
+/*UI*/
 
 .ui-datatable-footer {
     text-align: left !important;
