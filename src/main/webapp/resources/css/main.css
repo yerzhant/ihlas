@@ -8,10 +8,8 @@ and open the template in the editor.
     Author     : yerzhan
 */
 
-.doc {
-    width: 600px;
-    height: 600px;
-}
+
+///////// Fields
 
 .date {
     width: 10%;
@@ -22,14 +20,28 @@ and open the template in the editor.
     width: 20%;
 }
 
-.nbr {
+.id {
     width: 5%;
     text-align: center;
 }
 
+///////// Misc
+
 .dialog-footer {
     padding: 4px 10px;
 }
+
+.doc {
+    width: 600px;
+    height: 600px;
+}
+
+.filter {
+    margin-left: 200px !important;
+    margin-right: 20px !important;
+}
+
+///////// UI
 
 .ui-datatable-footer {
     text-align: left !important;
@@ -40,6 +52,14 @@ and open the template in the editor.
     margin-bottom: 20px;
 }
 
-.body {
-    padding-top: 20px;
+.ui-panelgrid-cell {
+    border-style: hidden !important;
+}
+
+.ui-panel-title {
+    margin: 0 !important;
+}
+
+.ui-panel-titlebar {
+    padding: 5px 10px !important;
 }

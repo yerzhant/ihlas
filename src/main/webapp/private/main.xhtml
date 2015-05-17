@@ -10,15 +10,15 @@
     <ui:define name="title">Главная</ui:define>
 
     <ui:define name="body">
-        <h:form>
-            <p:panelGrid columns="3">
-                <p:outputLabel for="filter">Поиск:</p:outputLabel>
-                <p:inputText id="filter" value="#{indigents.filter}" size="40" />
-                <p:commandButton value="Найти" actionListener="#{indigents.filter()}" update="indigents:tableForm:table" icon="ui-icon-search" />
-            </p:panelGrid>
-        </h:form>
 
-        <p:panel header="Нуждающиеся">
+        <p:panel>
+            <f:facet name="header">
+                <h:form>
+                    <p:outputLabel value="Нуждающиеся" />
+                    <p:inputText id="filter" value="#{indigents.filter}" class="filter" />
+                    <p:commandButton value="Найти" actionListener="#{indigents.filter()}" update="indigents:tableForm:table" icon="ui-icon-search" />
+                </h:form>
+            </f:facet>
             <ez:table id="indigents" dialogHeader="Наждающийся"
                       updateOnSelect="indigentDocs:tableForm:table applications:tableForm:table appDocs:tableForm:table"
                       items="#{indigents.items}" selected="#{indigents.selected}"
@@ -108,7 +108,7 @@
                       items="#{applications.items}" selected="#{applications.selected}"
                       create="#{applications.create()}" save="#{applications.save()}" delete="#{applications.delete()}" cancel="#{applications.cancel()}" refresh="#{applications.refresh()}">
 
-                <p:column headerText="№" class="nbr">
+                <p:column headerText="№" class="id">
                     #{item.id}
                 </p:column>
 
