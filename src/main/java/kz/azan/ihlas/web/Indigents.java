@@ -34,6 +34,7 @@ public class Indigents extends Controller<Indigent> {
 
     public void filter() {
         items = bean.filter(filter);
+        setSelected(null);
     }
 
     @Override

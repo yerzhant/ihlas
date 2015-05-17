@@ -16,11 +16,12 @@
                 <h:form>
                     <p:outputLabel value="Нуждающиеся" />
                     <p:inputText id="filter" value="#{indigents.filter}" class="filter" />
-                    <p:commandButton value="Найти" actionListener="#{indigents.filter()}" update="indigents:tableForm:table" icon="ui-icon-search" />
+                    <p:commandButton value="Найти" actionListener="#{indigents.filter()}" icon="ui-icon-search"
+                                     update="indigents:tableForm:table indigentDocs:tableForm:table applications:tableForm:table appDocs:tableForm:table" />
                 </h:form>
             </f:facet>
-            <ez:table id="indigents" dialogHeader="Наждающийся"
-                      updateOnSelect="indigentDocs:tableForm:table applications:tableForm:table appDocs:tableForm:table"
+            <ez:table id="indigents" dialogHeader="Наждающийся" deleteMessage="Удалить нуждающиего и все его заявления?"
+                      updates="indigentDocs:tableForm:table applications:tableForm:table appDocs:tableForm:table"
                       items="#{indigents.items}" selected="#{indigents.selected}"
                       create="#{indigents.create()}" save="#{indigents.save()}" delete="#{indigents.delete()}" cancel="#{indigents.cancel()}" refresh="#{indigents.filter()}">
 
@@ -86,11 +87,11 @@
                             <p:message for="docType" />
 
                             <p:outputLabel for="notes" value="Примечания" />
-                            <p:inputText id="notes" value="#{indigentDocs.selected.notes}" />
+                            <p:inputTextarea id="notes" value="#{indigentDocs.selected.notes}" />
                             <p:message for="notes" />
 
                             <p:outputLabel for="image" value="Документ" />
-                            <p:graphicImage id="image" value="#{indigentDocs.image}" cache="false" />
+                            <p:graphicImage id="image" value="#{indigentDocs.image}" cache="false" class="doc" />
                             <p:message for="image" />
                         </p:panelGrid>
 
@@ -104,7 +105,7 @@
 
         <p:panel header="Заявления">
             <ez:table id="applications" dialogHeader="Заявление" disableButtons="#{empty indigents.selected}"
-                      updateOnSelect="appDocs:tableForm:table"
+                      updates="appDocs:tableForm:table"
                       items="#{applications.items}" selected="#{applications.selected}"
                       create="#{applications.create()}" save="#{applications.save()}" delete="#{applications.delete()}" cancel="#{applications.cancel()}" refresh="#{applications.refresh()}">
 
@@ -135,7 +136,7 @@
                         <p:message for="appType" />
 
                         <p:outputLabel for="reason" value="Причина" />
-                        <p:inputText id="reason" value="#{applications.selected.reason}" />
+                        <p:inputTextarea id="reason" value="#{applications.selected.reason}" />
                         <p:message for="reason" />
 
                         <p:outputLabel for="appliedOn" value="Дата подачи" />
@@ -168,11 +169,11 @@
                             <p:message for="docType" />
 
                             <p:outputLabel for="notes" value="Примечания" />
-                            <p:inputText id="notes" value="#{appDocs.selected.notes}" />
+                            <p:inputTextarea id="notes" value="#{appDocs.selected.notes}" />
                             <p:message for="notes" />
 
                             <p:outputLabel for="image" value="Документ" />
-                            <p:graphicImage id="image" value="#{appDocs.image}" cache="false" />
+                            <p:graphicImage id="image" value="#{appDocs.image}" cache="false" class="doc" />
                             <p:message for="image" />
                         </p:panelGrid>
 

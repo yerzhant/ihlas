@@ -64,10 +64,10 @@ public class Indigent implements Serializable {
     @Size(max = 2147483647)
     private String surname;
 
-    @OneToMany(mappedBy = "indigent")
+    @OneToMany(mappedBy = "indigent", cascade = CascadeType.REMOVE)
     private List<Doc> docList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "indigent")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "indigent")
     private List<Application> applicationList;
 
     public Indigent() {
