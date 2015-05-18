@@ -64,6 +64,15 @@ and open the template in the editor.
     padding: 5px 10px !important;
 }
 
+.ui-panel-titlebar-icon {
+    margin-top: 0 !important;
+}
+
 .ui-inputtextarea {
-    width: 50em;
+    width: 30em;
+    height: 15em;
+}
+
+.ui-helper-reset {
+    line-height: 1 !important;
 }

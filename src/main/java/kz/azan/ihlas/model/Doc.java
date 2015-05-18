@@ -7,6 +7,7 @@ package kz.azan.ihlas.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,7 +51,7 @@ public class Doc implements Serializable {
     private String notes;
 
     @JoinColumn(name = "indigent", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Indigent indigent;
 
     @JoinColumn(name = "type", referencedColumnName = "id")
@@ -58,7 +59,7 @@ public class Doc implements Serializable {
     private DocType docType;
 
     @JoinColumn(name = "application", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Application application;
 
     public Doc() {

@@ -67,7 +67,7 @@ public class Indigent implements Serializable {
     @OneToMany(mappedBy = "indigent", cascade = CascadeType.REMOVE)
     private List<Doc> docList;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "indigent")
+    @OneToMany(mappedBy = "indigent", cascade = CascadeType.REMOVE)
     private List<Application> applicationList;
 
     public Indigent() {

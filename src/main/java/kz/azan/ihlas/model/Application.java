@@ -56,7 +56,7 @@ public class Application implements Serializable {
     private List<Doc> docList;
 
     @JoinColumn(name = "indigent", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Indigent indigent;
 
     @JoinColumn(name = "type", referencedColumnName = "id")
