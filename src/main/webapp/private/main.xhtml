@@ -86,13 +86,13 @@
                             </p:selectOneMenu>
                             <p:message for="docType" />
 
-                            <p:outputLabel for="notes" value="Примечания" />
-                            <p:inputTextarea id="notes" value="#{indigentDocs.selected.notes}" />
-                            <p:message for="notes" />
-
                             <p:outputLabel for="image" value="Документ" />
                             <p:graphicImage id="image" value="#{indigentDocs.image}" cache="false" class="doc" />
                             <p:message for="image" />
+
+                            <p:outputLabel for="notes" value="Примечания" />
+                            <p:inputTextarea id="notes" value="#{indigentDocs.selected.notes}" />
+                            <p:message for="notes" />
                         </p:panelGrid>
 
                         <p:fileUpload id="uploader" fileUploadListener="#{indigentDocs.handleFile}" auto="true" update="image" label="Выбрать файл" />
@@ -135,13 +135,13 @@
                         </p:selectOneMenu>
                         <p:message for="appType" />
 
-                        <p:outputLabel for="reason" value="Причина" />
-                        <p:inputTextarea id="reason" value="#{applications.selected.reason}" />
-                        <p:message for="reason" />
-
                         <p:outputLabel for="appliedOn" value="Дата подачи" />
                         <p:calendar id="appliedOn" value="#{applications.selected.appliedOn}" mask="true" pattern="dd.MM.yyyy" />
                         <p:message for="appliedOn" />
+
+                        <p:outputLabel for="reason" value="Причина" />
+                        <p:inputTextarea id="reason" value="#{applications.selected.reason}" />
+                        <p:message for="reason" />
                     </p:panelGrid>
                 </f:facet>
 
@@ -168,13 +168,13 @@
                             </p:selectOneMenu>
                             <p:message for="docType" />
 
-                            <p:outputLabel for="notes" value="Примечания" />
-                            <p:inputTextarea id="notes" value="#{appDocs.selected.notes}" />
-                            <p:message for="notes" />
-
                             <p:outputLabel for="image" value="Документ" />
                             <p:graphicImage id="image" value="#{appDocs.image}" cache="false" class="doc" />
                             <p:message for="image" />
+
+                            <p:outputLabel for="notes" value="Примечания" />
+                            <p:inputTextarea id="notes" value="#{appDocs.selected.notes}" />
+                            <p:message for="notes" />
                         </p:panelGrid>
 
                         <p:fileUpload id="uploader" fileUploadListener="#{appDocs.handleFile}" auto="true" update="image" label="Выбрать файл" />
