@@ -581,6 +581,46 @@ GRANT USAGE ON SEQUENCE indigents_id_seq TO ihlas_web;
 
 
 --
+-- Name: users; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON TABLE users FROM PUBLIC;
+REVOKE ALL ON TABLE users FROM ihlas;
+GRANT ALL ON TABLE users TO ihlas;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE users TO ihlas_web;
+
+
+--
+-- Name: users_groups; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON TABLE users_groups FROM PUBLIC;
+REVOKE ALL ON TABLE users_groups FROM ihlas;
+GRANT ALL ON TABLE users_groups TO ihlas;
+GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE users_groups TO ihlas_web;
+
+
+--
+-- Name: users_groups_id_seq; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON SEQUENCE users_groups_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE users_groups_id_seq FROM ihlas;
+GRANT ALL ON SEQUENCE users_groups_id_seq TO ihlas;
+GRANT USAGE ON SEQUENCE users_groups_id_seq TO ihlas_web;
+
+
+--
+-- Name: users_id_seq; Type: ACL; Schema: public; Owner: ihlas
+--
+
+REVOKE ALL ON SEQUENCE users_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE users_id_seq FROM ihlas;
+GRANT ALL ON SEQUENCE users_id_seq TO ihlas;
+GRANT USAGE ON SEQUENCE users_id_seq TO ihlas_web;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
