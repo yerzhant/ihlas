@@ -65,10 +65,10 @@ public class Indigent implements Serializable {
     private String surname;
 
     @OneToMany(mappedBy = "indigent", cascade = CascadeType.REMOVE)
-    private List<Doc> docList;
+    private List<Doc> docs;
 
     @OneToMany(mappedBy = "indigent", cascade = CascadeType.REMOVE)
-    private List<Application> applicationList;
+    private List<Application> applications;
 
     public Indigent() {
     }
@@ -124,20 +124,20 @@ public class Indigent implements Serializable {
         this.surname = surname;
     }
 
-    public List<Doc> getDocList() {
-        return docList;
+    public List<Doc> getDocs() {
+        return docs;
     }
 
-    public void setDocList(List<Doc> docList) {
-        this.docList = docList;
+    public void setDocs(List<Doc> docs) {
+        this.docs = docs;
     }
 
-    public List<Application> getApplicationList() {
-        return applicationList;
+    public List<Application> getApplications() {
+        return applications;
     }
 
-    public void setApplicationList(List<Application> applicationList) {
-        this.applicationList = applicationList;
+    public void setApplications(List<Application> applications) {
+        this.applications = applications;
     }
 
     @Override

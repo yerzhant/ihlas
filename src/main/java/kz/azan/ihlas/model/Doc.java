@@ -51,7 +51,7 @@ public class Doc implements Serializable {
     private String notes;
 
     @JoinColumn(name = "indigent", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Indigent indigent;
 
     @JoinColumn(name = "type", referencedColumnName = "id")
@@ -59,7 +59,7 @@ public class Doc implements Serializable {
     private DocType docType;
 
     @JoinColumn(name = "application", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Application application;
 
     public Doc() {

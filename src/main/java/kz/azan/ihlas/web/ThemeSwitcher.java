@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ThemeSwitcher implements Serializable {
 
     private static final String COOKIE_NAME = "theme";
-    private static final String DEFAULT_THEME = "redmond";
+    private static final String DEFAULT_THEME = "hot-sneaks";
     private TreeMap<String, String> themes;
     private String theme;
 
