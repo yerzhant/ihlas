@@ -36,7 +36,7 @@
                     <p:commandButton value="Удалить" icon="ui-icon-trash" actionListener="#{cc.attrs.delete}" update="#{cc.attrs.updates} @form" id="deleteButton" disabled="#{empty cc.attrs.selected}">
                         <p:confirm message="#{cc.attrs.deleteMessage}" icon="ui-icon-alert" />
                     </p:commandButton>                            
-                    <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{cc.attrs.refresh}" update="@form" disabled="#{cc.attrs.disableButtons}" />
+                    <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{cc.attrs.refresh}" update="#{cc.attrs.updates} @form" disabled="#{cc.attrs.disableButtons}" />
                 </f:facet>
 
                 <p:ajax event="rowSelect" update="editButton deleteButton #{cc.attrs.updates}" />
