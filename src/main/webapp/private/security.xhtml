@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../WEB-INF/templates/main.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ez="http://xmlns.jcp.org/jsf/composite/ezcomp">
+
+    <ui:define name="title">Безопасность</ui:define>
+
+    <ui:define name="body">
+        <p:panel header="Пользователи">
+            <ez:table dialogHeader="Пользователь"
+                      items="#{users.items}" selected="#{users.selected}"
+                      create="#{users.create()}" save="#{users.save()}" delete="#{users.delete()}" cancel="#{users.cancel()}" refresh="#{users.refresh()}">
+
+                <p:column headerText="Логин">
+                    #{item.name}
+                </p:column>
+
+                <p:column headerText="ФИО">
+                    #{item.fullName}
+                </p:column>
+
+                <f:facet name="dialog">
+                    <p:panelGrid columns="3" rendered="#{not empty users.selected}">
+                        <p:outputLabel for="name" value="Логин" />
+                        <p:inputText id="name" value="#{users.selected.name}" />
+                        <p:message for="name" />
+
+                        <p:outputLabel for="password" value="Пароль" />
+                        <p:password id="password" value="#{users.selected.password}" match="passwordConfirm" feedback="true" weakLabel="Слабый" goodLabel="Хороший" strongLabel="Сильный" />
+                        <p:message for="password" />
+
+                        <p:outputLabel for="passwordConfirm" value="Подтверждение пароля" />
+                        <p:password id="passwordConfirm" value="#{users.selected.password}" validatorMessage="Введенные пароли не совпадают" />
+                        <p:message for="passwordConfirm" />
+
+                        <p:outputLabel for="fullName" value="ФИО" />
+                        <p:inputText id="fullName" value="#{users.selected.fullName}" />
+                        <p:message for="fullName" />
+                    </p:panelGrid>
+                </f:facet>
+
+            </ez:table>
+        </p:panel>
+    </ui:define>
+
+</ui:composition>

@@ -44,7 +44,6 @@ public class Doc implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-//    @Lob
     private byte[] image;
 
     @Size(max = 2147483647)

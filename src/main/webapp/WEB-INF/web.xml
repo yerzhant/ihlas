@@ -30,6 +30,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>private/main.xhtml</welcome-file>
+        <welcome-file>private/security.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>
