@@ -10,7 +10,7 @@
 
     <ui:define name="body">
         <p:panel header="Пользователи">
-            <ez:table id="table" dialogHeader="Пользователь"
+            <ez:table dialogHeader="Пользователь" updates="groups:tableForm:table"
                       items="#{users.items}" selected="#{users.selected}"
                       create="#{users.create()}" save="#{users.save()}" delete="#{users.delete()}" cancel="#{users.cancel()}" refresh="#{users.refresh()}">
 
@@ -44,6 +44,28 @@
                 </f:facet>
 
             </ez:table>
+
+            <p:panel header="Группы">
+                <ez:table id="groups" dialogHeader="Группа" disableButtons="#{empty users.selected}"
+                          items="#{usersGroups.items}" selected="#{usersGroups.selected}"
+                          create="#{usersGroups.create()}" save="#{usersGroups.save()}" delete="#{usersGroups.delete()}" cancel="#{usersGroups.cancel()}" refresh="#{usersGroups.refresh()}">
+
+                    <p:column headerText="Наименование">
+                        #{item.name}
+                    </p:column>
+
+                    <f:facet name="dialog">
+                        <p:panelGrid columns="3" rendered="#{not empty usersGroups.selected}">
+                            <p:outputLabel for="name" value="Наименование" />
+                            <p:selectOneMenu id="name" value="#{usersGroups.selected.name}">
+                                <f:selectItems value="#{usersGroups.groups}" />
+                            </p:selectOneMenu>
+                            <p:message for="name" />
+                        </p:panelGrid>
+                    </f:facet>
+
+                </ez:table>
+            </p:panel>
         </p:panel>
     </ui:define>
 

@@ -5,17 +5,17 @@
  */
 package kz.azan.ihlas.web.event;
 
-import kz.azan.ihlas.model.Application;
+import kz.azan.ihlas.model.User;
 
 /**
  *
  * @author yerzhan
  */
-public class AppEvent {
+public class UserEvent {
 
-    public Application application;
+    public User user;
 
-    public AppEvent(Application application) {
-        this.application = application;
+    public UserEvent(User user) {
+        this.user = user;
     }
 }

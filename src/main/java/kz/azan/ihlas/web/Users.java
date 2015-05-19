@@ -8,12 +8,15 @@ package kz.azan.ihlas.web;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import javax.enterprise.context.SessionScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.data.UserBean;
 import kz.azan.ihlas.model.User;
 import kz.azan.ihlas.util.Util;
+import kz.azan.ihlas.web.event.Selection;
+import kz.azan.ihlas.web.event.UserEvent;
 
 /**
  *
@@ -26,6 +29,10 @@ public class Users extends Controller<User> {
     @Inject
     private UserBean bean;
 
+    @Inject
+    @Selection
+    private Event<UserEvent> selection;
+
     private boolean isPasswordChanged;
 
     public void passwordChanged() {
@@ -36,6 +43,7 @@ public class Users extends Controller<User> {
     public void setSelected(User selected) {
         isPasswordChanged = false;
         super.setSelected(selected);
+        selection.fire(new UserEvent(selected));
     }
 
     @Override
