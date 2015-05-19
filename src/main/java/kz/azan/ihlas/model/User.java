@@ -36,21 +36,21 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
     private String name;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
     private String password;
-    
+
     @Size(max = 2147483647)
     @Column(name = "full_name")
     private String fullName;
-    
+
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "user")
     private List<UsersGroup> usersGroups;
 
@@ -121,10 +121,7 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override

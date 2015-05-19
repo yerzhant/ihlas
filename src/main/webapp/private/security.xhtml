@@ -10,7 +10,7 @@
 
     <ui:define name="body">
         <p:panel header="Пользователи">
-            <ez:table dialogHeader="Пользователь"
+            <ez:table id="table" dialogHeader="Пользователь"
                       items="#{users.items}" selected="#{users.selected}"
                       create="#{users.create()}" save="#{users.save()}" delete="#{users.delete()}" cancel="#{users.cancel()}" refresh="#{users.refresh()}">
 
@@ -29,11 +29,12 @@
                         <p:message for="name" />
 
                         <p:outputLabel for="password" value="Пароль" />
-                        <p:password id="password" value="#{users.selected.password}" match="passwordConfirm" feedback="true" weakLabel="Слабый" goodLabel="Хороший" strongLabel="Сильный" />
+                        <p:password id="password" value="#{users.selected.password}" valueChangeListener="#{users.passwordChanged()}" redisplay="true" match="passwordConfirm" feedback="true"
+                                    weakLabel="Слабый" goodLabel="Хороший" strongLabel="Сильный" promptLabel="Пожалуйста, введите пароль" validatorMessage="Введенные пароли не совпадают" />
                         <p:message for="password" />
 
                         <p:outputLabel for="passwordConfirm" value="Подтверждение пароля" />
-                        <p:password id="passwordConfirm" value="#{users.selected.password}" validatorMessage="Введенные пароли не совпадают" />
+                        <p:password id="passwordConfirm" value="#{users.selected.password}" redisplay="true"  />
                         <p:message for="passwordConfirm" />
 
                         <p:outputLabel for="fullName" value="ФИО" />
