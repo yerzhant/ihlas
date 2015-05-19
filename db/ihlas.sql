@@ -25,6 +25,18 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 SET search_path = public, pg_catalog;
 
+--
+-- Name: user_group; Type: TYPE; Schema: public; Owner: ihlas
+--
+
+CREATE TYPE user_group AS ENUM (
+    'admin',
+    'user'
+);
+
+
+ALTER TYPE public.user_group OWNER TO ihlas;
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -205,6 +217,75 @@ ALTER SEQUENCE indigents_id_seq OWNED BY indigents.id;
 
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: ihlas; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    name character varying NOT NULL,
+    password character varying NOT NULL,
+    full_name character varying
+);
+
+
+ALTER TABLE public.users OWNER TO ihlas;
+
+--
+-- Name: users_groups; Type: TABLE; Schema: public; Owner: ihlas; Tablespace: 
+--
+
+CREATE TABLE users_groups (
+    id integer NOT NULL,
+    "user" integer NOT NULL,
+    name user_group NOT NULL
+);
+
+
+ALTER TABLE public.users_groups OWNER TO ihlas;
+
+--
+-- Name: users_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: ihlas
+--
+
+CREATE SEQUENCE users_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_groups_id_seq OWNER TO ihlas;
+
+--
+-- Name: users_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ihlas
+--
+
+ALTER SEQUENCE users_groups_id_seq OWNED BY users_groups.id;
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ihlas
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO ihlas;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ihlas
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: ihlas
 --
 
@@ -237,6 +318,20 @@ ALTER TABLE ONLY docs ALTER COLUMN id SET DEFAULT nextval('docs_id_seq'::regclas
 --
 
 ALTER TABLE ONLY indigents ALTER COLUMN id SET DEFAULT nextval('indigents_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ihlas
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: ihlas
+--
+
+ALTER TABLE ONLY users_groups ALTER COLUMN id SET DEFAULT nextval('users_groups_id_seq'::regclass);
 
 
 --
@@ -296,6 +391,38 @@ ALTER TABLE ONLY indigents
 
 
 --
+-- Name: users_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: ihlas; Tablespace: 
+--
+
+ALTER TABLE ONLY users_groups
+    ADD CONSTRAINT users_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_groups_user_name_key; Type: CONSTRAINT; Schema: public; Owner: ihlas; Tablespace: 
+--
+
+ALTER TABLE ONLY users_groups
+    ADD CONSTRAINT users_groups_user_name_key UNIQUE ("user", name);
+
+
+--
+-- Name: users_name_key; Type: CONSTRAINT; Schema: public; Owner: ihlas; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_name_key UNIQUE (name);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: ihlas; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: applications_indigent_fkey; Type: FK CONSTRAINT; Schema: public; Owner: ihlas
 --
 
@@ -333,6 +460,14 @@ ALTER TABLE ONLY docs
 
 ALTER TABLE ONLY docs
     ADD CONSTRAINT docs_type_fkey FOREIGN KEY (type) REFERENCES doc_types(id);
+
+
+--
+-- Name: users_groups_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: ihlas
+--
+
+ALTER TABLE ONLY users_groups
+    ADD CONSTRAINT users_groups_user_fkey FOREIGN KEY ("user") REFERENCES users(id);
 
 
 --
