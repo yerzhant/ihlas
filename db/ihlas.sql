@@ -236,7 +236,7 @@ ALTER TABLE public.users OWNER TO ihlas;
 
 CREATE TABLE users_groups (
     id integer NOT NULL,
-    "user" integer NOT NULL,
+    user_id integer NOT NULL,
     name user_group NOT NULL
 );
 
@@ -403,7 +403,7 @@ ALTER TABLE ONLY users_groups
 --
 
 ALTER TABLE ONLY users_groups
-    ADD CONSTRAINT users_groups_user_name_key UNIQUE ("user", name);
+    ADD CONSTRAINT users_groups_user_name_key UNIQUE (user_id, name);
 
 
 --
@@ -467,7 +467,7 @@ ALTER TABLE ONLY docs
 --
 
 ALTER TABLE ONLY users_groups
-    ADD CONSTRAINT users_groups_user_fkey FOREIGN KEY ("user") REFERENCES users(id);
+    ADD CONSTRAINT users_groups_user_fkey FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
