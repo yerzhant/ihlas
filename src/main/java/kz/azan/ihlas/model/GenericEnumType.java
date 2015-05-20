@@ -35,7 +35,6 @@ public abstract class GenericEnumType<T, E extends Enum<E>> implements UserType 
         valueMap = new HashMap<>(enumValues.length);
 
         for (E e : enumValues) {
-
             enumMap.put(e.toString(), e);
             valueMap.put(e, e.toString());
         }

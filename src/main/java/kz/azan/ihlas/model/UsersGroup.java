@@ -6,7 +6,9 @@
 package kz.azan.ihlas.model;
 
 import java.io.Serializable;
+import javax.persistence.AttributeConverter;
 import javax.persistence.Basic;
+import javax.persistence.Converter;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.Type;
 
 /**
  *
@@ -49,6 +52,7 @@ public class UsersGroup implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Enumerated(EnumType.STRING)
+    @Type(type = "kz.azan.ihlas.model.UserGroupEnumType")
     private Group name;
 
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -115,5 +119,4 @@ public class UsersGroup implements Serializable {
     public String toString() {
         return "kz.azan.ihlas.model.UsersGroup[ id=" + id + " ]";
     }
-
 }
