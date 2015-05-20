@@ -7,7 +7,6 @@ package kz.azan.ihlas.model;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,19 +29,15 @@ public abstract class GenericEnumType<T, E extends Enum<E>> implements UserType 
     private final HashMap<String, E> enumMap;
     private final HashMap<E, String> valueMap;
 
-    public GenericEnumType(Class<E> clazz, E[] enumValues, String method, int sqlType) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public GenericEnumType(Class<E> clazz, E[] enumValues, int sqlType) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         this.clazz = clazz;
         enumMap = new HashMap<>(enumValues.length);
         valueMap = new HashMap<>(enumValues.length);
-        Method m = clazz.getMethod(method);
 
         for (E e : enumValues) {
 
-//            @SuppressWarnings("unchecked")
-            T value = (T) m.invoke(e);
-
-            enumMap.put(value.toString(), e);
-            valueMap.put(e, value.toString());
+            enumMap.put(e.toString(), e);
+            valueMap.put(e, e.toString());
         }
         this.sqlType = sqlType;
     }
