@@ -29,6 +29,14 @@ public class Util {
         addError(null, s);
     }
 
+    @SuppressWarnings("ThrowableResultIgnored")
+    public static void addError(Throwable t) {
+        while (t.getCause() != null) {
+            t = t.getCause();
+        }
+        addError(t.getLocalizedMessage());
+    }
+
     public static void addError(String clientId, String s) {
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, s, s);
         FacesContext fc = FacesContext.getCurrentInstance();

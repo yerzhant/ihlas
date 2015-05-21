@@ -6,12 +6,8 @@
 package kz.azan.ihlas.model;
 
 import java.io.Serializable;
-import javax.persistence.AttributeConverter;
 import javax.persistence.Basic;
-import javax.persistence.Converter;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,7 +47,6 @@ public class UsersGroup implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Enumerated(EnumType.STRING)
     @Type(type = "kz.azan.ihlas.model.UserGroupEnumType")
     private Group name;
 

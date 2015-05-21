@@ -8,6 +8,7 @@ package kz.azan.ihlas.web;
 import java.io.Serializable;
 import java.util.List;
 import kz.azan.ihlas.data.Bean;
+import kz.azan.ihlas.util.Util;
 
 /**
  *
@@ -28,11 +29,15 @@ public abstract class Controller<T> implements Serializable {
     }
 
     public void save() {
-        getBean().edit(selected);
-        if (isNew) {
-            selected = null;
-            isNew = false;
-            items = null;
+        try {
+            getBean().edit(selected);
+            if (isNew) {
+                selected = null;
+                isNew = false;
+                items = null;
+            }
+        } catch (Exception ex) {
+            Util.addError(ex.getCause());
         }
     }
 

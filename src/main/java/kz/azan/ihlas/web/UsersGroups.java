@@ -5,6 +5,7 @@
  */
 package kz.azan.ihlas.web;
 
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
@@ -36,6 +37,14 @@ public class UsersGroups extends Controller<UsersGroup> {
 
     public UsersGroup.Group[] getGroups() {
         return UsersGroup.Group.values();
+    }
+
+    @Override
+    public List<UsersGroup> getItems() {
+        if (items == null) {
+            items = bean.find(users.getSelected());
+        }
+        return items;
     }
 
     @Override
