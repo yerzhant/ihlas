@@ -41,6 +41,11 @@ and open the template in the editor.
     margin-right: 20px !important;
 }
 
+.bottom {
+    text-align: center;
+    font-size: smaller;
+}
+
 /*UI*/
 
 .ui-datatable-footer {

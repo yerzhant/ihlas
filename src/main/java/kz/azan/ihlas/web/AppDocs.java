@@ -15,7 +15,7 @@ import kz.azan.ihlas.data.DocBean;
 import kz.azan.ihlas.data.Bean;
 import kz.azan.ihlas.model.Doc;
 import kz.azan.ihlas.util.Util;
-import kz.azan.ihlas.web.event.IndigentEvent;
+import kz.azan.ihlas.web.event.AppEvent;
 import kz.azan.ihlas.web.event.Selection;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.ByteArrayContent;
@@ -27,15 +27,15 @@ import org.primefaces.model.StreamedContent;
  */
 @Named
 @SessionScoped
-public class indigentDocs extends Controller<Doc> {
+public class AppDocs extends Controller<Doc> {
 
     @Inject
     private DocBean bean;
 
     @Inject
-    private Indigents indigents;
+    private Applications applications;
 
-    public void indigentSelected(@Observes @Selection IndigentEvent event) {
+    public void appSelected(@Observes @Selection AppEvent event) {
         items = null;
         setSelected(null);
     }
@@ -65,7 +65,7 @@ public class indigentDocs extends Controller<Doc> {
     @Override
     public List<Doc> getItems() {
         if (items == null) {
-            items = bean.find(indigents.getSelected());
+            items = bean.find(applications.getSelected());
         }
         return items;
     }
@@ -78,7 +78,7 @@ public class indigentDocs extends Controller<Doc> {
     @Override
     protected Doc createEntity() {
         Doc doc = new Doc();
-        doc.setIndigent(indigents.getSelected());
+        doc.setApplication(applications.getSelected());
         return doc;
     }
 }
