@@ -20,7 +20,7 @@
                                      update="indigents:tableForm:table indigentDocs:tableForm:table applications:tableForm:table appDocs:tableForm:table" />
                 </h:form>
             </f:facet>
-            <ez:table id="indigents" dialogHeader="Наждающийся" deleteMessage="Удалить нуждающиего и все его заявления?"
+            <ez:table id="indigents" dialogHeader="Наждающийся" deleteMessage="Удалить нуждающегося и все его заявления?"
                       updates="indigentDocs:tableForm:table applications:tableForm:table appDocs:tableForm:table"
                       items="#{indigents.items}" selected="#{indigents.selected}"
                       create="#{indigents.create()}" save="#{indigents.save()}" delete="#{indigents.delete()}" cancel="#{indigents.cancel()}" refresh="#{indigents.filter()}">
