@@ -10,7 +10,7 @@
 
     <ui:define name="body">
         <p:panel header="Пользователи">
-            <ez:table dialogHeader="Пользователь" updates="groups:tableForm:table"
+            <ez:table dialogHeader="Пользователь" updates="groups:tableForm:table @form"
                       items="#{users.items}" selected="#{users.selected}"
                       create="#{users.create()}" save="#{users.save()}" delete="#{users.delete()}" cancel="#{users.cancel()}" refresh="#{users.refresh()}">
 
@@ -18,22 +18,26 @@
                     #{item.name}
                 </p:column>
 
-                <p:column headerText="Оставшееся количество попыток входа">
+                <p:column headerText="Осталось кол-во попыток" class="number">
                     #{item.leftLoginTries}
                 </p:column>
 
                 <p:column headerText="ФИО">
                     #{item.fullName}
                 </p:column>
-                
+
+                <f:facet name="footer">
+                    <p:commandButton value="Сбрость кол-во попыток" actionListener="#{users.resetLoginTries()}" update="tableForm:table" disabled="#{empty users.selected}" />
+                </f:facet>
+
                 <f:facet name="dialog">
                     <p:panelGrid columns="3" rendered="#{not empty users.selected}">
                         <p:outputLabel for="name" value="Логин" />
-                        <p:inputText id="name" value="#{users.selected.name}" />
+                        <p:inputText id="name" value="#{users.selected.name}" valueChangeListener="#{users.rehash()}"/>
                         <p:message for="name" />
 
                         <p:outputLabel for="password" value="Пароль" />
-                        <p:password id="password" value="#{users.selected.password}" valueChangeListener="#{users.passwordChanged()}" redisplay="true" match="passwordConfirm" feedback="true"
+                        <p:password id="password" value="#{users.selected.password}" valueChangeListener="#{users.rehash()}" redisplay="true" match="passwordConfirm" feedback="true"
                                     weakLabel="Слабый" goodLabel="Хороший" strongLabel="Сильный" promptLabel="Пожалуйста, введите пароль" validatorMessage="Введенные пароли не совпадают" />
                         <p:message for="password" />
 

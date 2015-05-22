@@ -35,10 +35,10 @@ public class Users extends Controller<User> {
     @Selection
     private Event<UserEvent> selection;
 
-    private boolean isPasswordChanged;
+    private boolean rehash;
 
-    public void passwordChanged() {
-        isPasswordChanged = true;
+    public void rehash() {
+        rehash = true;
     }
 
     public void resetLoginTries() {
@@ -48,14 +48,14 @@ public class Users extends Controller<User> {
 
     @Override
     public void setSelected(User selected) {
-        isPasswordChanged = false;
+        rehash = false;
         super.setSelected(selected);
         selection.fire(new UserEvent(selected));
     }
 
     @Override
     public void save() {
-        if (getSelected().getId() == null || isPasswordChanged) {
+        if (getSelected().getId() == null || rehash) {
             try {
                 getSelected().setPassword(Util.hashSha256(getSelected().getName() + getSelected().getPassword()));
             } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
@@ -65,7 +65,7 @@ public class Users extends Controller<User> {
 
         super.save();
 
-        isPasswordChanged = false;
+        rehash = false;
     }
 
     @Override

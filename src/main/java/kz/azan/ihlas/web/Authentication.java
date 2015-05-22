@@ -37,10 +37,10 @@ public class Authentication {
         HttpServletRequest req = (HttpServletRequest) fc.getExternalContext().getRequest();
 
         try {
-            req.login(username, Util.hashSha256(password));
+            req.login(username, Util.hashSha256(username + password));
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException | ServletException e) {
             Util.addError("Доступ запрещен");
-            RequestContext.getCurrentInstance().execute("jQuery('#dialog').effect('shake', { times:3 }, 100)");
+            RequestContext.getCurrentInstance().execute("jQuery('#dialog').effect('shake', { times:3 }, 500)");
             return null;
         }
 

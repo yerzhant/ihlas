@@ -21,6 +21,7 @@
         <cc:attribute name="cancel" method-signature="void ()" />
         <cc:attribute name="refresh" method-signature="void ()" />
         <cc:facet name="dialog" />
+        <cc:facet name="footer" />
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
@@ -38,6 +39,8 @@
                         <p:confirm message="#{cc.attrs.deleteMessage}" icon="ui-icon-alert" />
                     </p:commandButton>                            
                     <p:commandButton value="Обновить" icon="ui-icon-refresh" actionListener="#{cc.attrs.refresh}" update="#{cc.attrs.updates} @form" disabled="#{cc.attrs.disableButtons}" />
+
+                    <cc:renderFacet name="footer" />
                 </f:facet>
 
                 <p:ajax event="rowSelect" update="editButton deleteButton #{cc.attrs.updates}" />
