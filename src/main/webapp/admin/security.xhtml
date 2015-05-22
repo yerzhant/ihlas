@@ -18,10 +18,14 @@
                     #{item.name}
                 </p:column>
 
+                <p:column headerText="Оставшееся количество попыток входа">
+                    #{item.leftLoginTries}
+                </p:column>
+
                 <p:column headerText="ФИО">
                     #{item.fullName}
                 </p:column>
-
+                
                 <f:facet name="dialog">
                     <p:panelGrid columns="3" rendered="#{not empty users.selected}">
                         <p:outputLabel for="name" value="Логин" />

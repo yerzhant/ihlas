@@ -47,6 +47,11 @@ public class User implements Serializable {
     @Size(min = 1, max = 2147483647)
     private String password;
 
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "left_login_tries")
+    private short leftLoginTries;
+
     @Size(max = 2147483647)
     @Column(name = "full_name")
     private String fullName;
@@ -57,14 +62,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id) {
-        this.id = id;
-    }
-
-    public User(Integer id, String name, String password) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
+    public User(short leftLoginTries) {
+        this.leftLoginTries = leftLoginTries;
     }
 
     public Integer getId() {
@@ -89,6 +88,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public short getLeftLoginTries() {
+        return leftLoginTries;
+    }
+
+    public void setLeftLoginTries(short leftLoginTries) {
+        this.leftLoginTries = leftLoginTries;
     }
 
     public String getFullName() {
@@ -128,5 +135,4 @@ public class User implements Serializable {
     public String toString() {
         return "kz.azan.ihlas.model.User[ id=" + id + " ]";
     }
-
 }
