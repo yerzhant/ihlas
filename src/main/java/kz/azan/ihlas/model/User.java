@@ -28,10 +28,15 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "users")
 @NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")})
+    @NamedQuery(name = User.FIND_BY_NAME, query = "SELECT u FROM User u WHERE u.name = :name")})
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    private static final short MAX_LOGIN_TRIES = 3;
+
+    public static final String FIND_BY_NAME = "User.findByName";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -60,10 +65,11 @@ public class User implements Serializable {
     private List<UsersGroup> usersGroups;
 
     public User() {
+        resetLeftLoginTries();
     }
 
-    public User(short leftLoginTries) {
-        this.leftLoginTries = leftLoginTries;
+    public final void resetLeftLoginTries() {
+        leftLoginTries = MAX_LOGIN_TRIES;
     }
 
     public Integer getId() {

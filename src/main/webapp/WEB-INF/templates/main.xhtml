@@ -24,20 +24,24 @@
                     <p:menubar>
                         <p:menuitem value="Главная" outcome="/user/main.xhtml" icon="ui-icon-home" />
                         <p:submenu label="Отчеты" icon="ui-icon-document">
-                            <p:menuitem value="Отчет 1" outcome="/admin/app-types.xhtml" />
-                            <p:menuitem value="Отчет 2" outcome="/admin/app-types.xhtml" />
+                            <p:menuitem value="Отчет 1" outcome="/user/main.xhtml" />
+                            <p:menuitem value="Отчет 2" outcome="/user/main.xhtml" />
                         </p:submenu>
-                        <p:submenu label="Справочники" icon="ui-icon-comment">
+                        <p:submenu label="Справочники" icon="ui-icon-comment" rendered="#{request.isUserInRole('admin')}">
                             <p:menuitem value="Типы заявлений" outcome="/admin/app-types.xhtml" />
                             <p:menuitem value="Типы документов" outcome="/admin/doc-types.xhtml" />
                         </p:submenu>
-                        <p:menuitem value="Безопасность" outcome="/admin/security.xhtml" icon="ui-icon-person" />
+                        <p:menuitem value="Безопасность" outcome="/admin/security.xhtml" icon="ui-icon-person" rendered="#{request.isUserInRole('admin')}" />
 
                         <f:facet name="options">
-                            <p:themeSwitcher value="#{themeSwitcher.theme}">
-                                <f:selectItems value="#{themeSwitcher.themes}"/>
-                                <p:ajax />
-                            </p:themeSwitcher>
+                            <h:panelGrid columns="3">
+                                <p:outputLabel value="#{authentication.fullName}" />
+                                <p:themeSwitcher value="#{themeSwitcher.theme}">
+                                    <f:selectItems value="#{themeSwitcher.themes}"/>
+                                    <p:ajax />
+                                </p:themeSwitcher>
+                                <p:commandButton action="#{authentication.logout()}" title="Выход" icon="ui-icon-power" />
+                            </h:panelGrid>
                         </f:facet>
                     </p:menubar>
                 </h:form>

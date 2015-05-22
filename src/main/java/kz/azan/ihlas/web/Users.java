@@ -26,8 +26,6 @@ import kz.azan.ihlas.web.event.UserEvent;
 @SessionScoped
 public class Users extends Controller<User> {
 
-    private static final short MAX_LOGIN_TRIES = 3;
-
     @Inject
     private UserBean bean;
 
@@ -42,7 +40,7 @@ public class Users extends Controller<User> {
     }
 
     public void resetLoginTries() {
-        getSelected().setLeftLoginTries(MAX_LOGIN_TRIES);
+        getSelected().resetLeftLoginTries();
         super.save();
     }
 
@@ -75,6 +73,6 @@ public class Users extends Controller<User> {
 
     @Override
     protected User createEntity() {
-        return new User(MAX_LOGIN_TRIES);
+        return new User();
     }
 }
