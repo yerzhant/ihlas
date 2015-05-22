@@ -24,10 +24,8 @@
                     <p:message for="password" />
 
                     <f:facet name="footer">
-                        <h:panelGrid columns="2" class="center">
-                            <p:commandButton value="OK" action="#{authentication.login()}" update="@form" class="login-button" />
-                            <p:commandButton value="Отмена" onclick="PF('loginDlg').hide()" type="button" class="login-button" />
-                        </h:panelGrid>
+                        <p:commandButton value="OK" action="#{authentication.login()}" update="@form" />
+                        <p:commandButton value="Отмена" onclick="PF('loginDlg').hide()" type="button" />
                     </f:facet>
 
                 </h:panelGrid>

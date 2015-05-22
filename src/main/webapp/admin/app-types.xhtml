@@ -10,7 +10,7 @@
 
     <ui:define name="body">
         <p:panel header="Типы заявлений">
-            <ez:table dialogHeader="Тип заявления"
+            <ez:table id="ttt" dialogHeader="Тип заявления"
                       items="#{appTypes.items}" selected="#{appTypes.selected}"
                       create="#{appTypes.create()}" save="#{appTypes.save()}" delete="#{appTypes.delete()}" cancel="#{appTypes.cancel()}" refresh="#{appTypes.refresh()}">
 
@@ -18,7 +18,7 @@
                     #{item.name}
                 </p:column>
 
-                <f:facet name="dialog">
+                <f:facet name="dialog" id="fff">
                     <p:panelGrid columns="3">
                         <p:outputLabel for="name" value="Наименование" />
                         <p:inputText id="name" value="#{appTypes.selected.name}" />

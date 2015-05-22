@@ -27,19 +27,6 @@ and open the template in the editor.
 
 /*Misc*/
 
-.center {
-    text-align: center;
-    width: 100%;
-}
-
-.login-button {
-    width: 150px;
-}
-
-.dialog-footer {
-    padding: 10px 10px;
-}
-
 .doc {
     max-width: 600px;
     max-height: 600px;
@@ -95,4 +82,17 @@ and open the template in the editor.
 
 .ui-helper-reset {
     line-height: 1 !important;
+}
+
+.ui-dialog-content button {
+    width: 170px;
+}
+
+.ui-dialog-footer button {
+    width: 100px;
+}
+
+.ui-dialog-content tfoot td, .ui-dialog-footer, .ui-dialog-content .none {
+    padding: 5px;
+    text-align: center !important;
 }
