@@ -10,7 +10,7 @@
 
     <ui:define name="body">
         <p:panel header="Пользователи">
-            <ez:table dialogHeader="Пользователь" updates="groups:tableForm:table @form"
+            <ez:table id="users" dialogHeader="Пользователь" updates="groups:tableForm:table @form"
                       items="#{users.items}" selected="#{users.selected}"
                       create="#{users.create()}" save="#{users.save()}" delete="#{users.delete()}" cancel="#{users.cancel()}" refresh="#{users.refresh()}">
 
@@ -33,7 +33,8 @@
                 <f:facet name="dialog">
                     <p:panelGrid columns="3" rendered="#{not empty users.selected}">
                         <p:outputLabel for="name" value="Логин" />
-                        <p:inputText id="name" value="#{users.selected.name}" valueChangeListener="#{users.rehash()}"/>
+                        <p:inputText id="name" value="#{users.selected.name}" valueChangeListener="#{users.rehash()}" onchange="$('#users\\:password').val('');
+                                $('#users\\:passwordConfirm').val('');" />
                         <p:message for="name" />
 
                         <p:outputLabel for="password" value="Пароль" />
