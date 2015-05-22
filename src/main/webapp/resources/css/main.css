@@ -27,6 +27,15 @@ and open the template in the editor.
 
 /*Misc*/
 
+.center {
+    text-align: center;
+    width: 100%;
+}
+
+.login-button {
+    width: 150px;
+}
+
 .dialog-footer {
     padding: 10px 10px;
 }
@@ -44,6 +53,13 @@ and open the template in the editor.
 .bottom {
     text-align: center;
     font-size: smaller;
+}
+
+.rounded-icon-button {
+    margin-top: -3px !important;
+    width: 30px !important;
+    height: 30px;
+    border-radius: 15px; 
 }
 
 /*UI*/
