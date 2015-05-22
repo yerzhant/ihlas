@@ -1,6 +1,6 @@
-function save(args, dialog) {
+function save(args, compId, dialog) {
     if (args.validationFailed) {
-        jQuery('#' + dialog).effect('shake', {times: 3}, 100);
+        jQuery('#' + compId + '\\:' + dialog).effect('shake', {times: 3}, 500);
     } else {
         PF(dialog).hide();
     }
