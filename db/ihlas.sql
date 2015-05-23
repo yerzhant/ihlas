@@ -224,6 +224,7 @@ CREATE TABLE users (
     id integer NOT NULL,
     name character varying NOT NULL,
     password character varying NOT NULL,
+    left_login_tries smallint NOT NULL,
     full_name character varying
 );
 
