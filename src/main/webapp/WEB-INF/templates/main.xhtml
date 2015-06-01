@@ -23,10 +23,6 @@
                 <h:form>
                     <p:menubar>
                         <p:menuitem value="Главная" outcome="/user/main.xhtml" icon="ui-icon-home" />
-                        <p:submenu label="Отчеты" icon="ui-icon-document">
-                            <p:menuitem value="Отчет 1" outcome="/user/main.xhtml" />
-                            <p:menuitem value="Отчет 2" outcome="/user/main.xhtml" />
-                        </p:submenu>
                         <p:submenu label="Справочники" icon="ui-icon-comment" rendered="#{request.isUserInRole('admin')}">
                             <p:menuitem value="Типы заявлений" outcome="/admin/app-types.xhtml" />
                             <p:menuitem value="Типы документов" outcome="/admin/doc-types.xhtml" />
