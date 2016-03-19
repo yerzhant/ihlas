@@ -2,6 +2,7 @@ How to install
 1. psql -h localhost -U postgres -f create.sql
 2. psql -h localhost -U ihlas -f ihlas.sql
 3. psql -h localhost -U ihlas -f init.sql
+4. add Datasource with connection jdbc:postgresql://localhost/ihlas
 4. add Security Domain ihlas with empty cache type
 5. code: Database, flag: required
 6. options:
